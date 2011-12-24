@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 24 Dec 2011 10:08:33 PM EET
+#* Last Modified : Sat 24 Dec 2011 10:25:08 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -34,7 +34,7 @@ def astar(startpoint,finishpoint,grid):
     #(heuristic,cost,(x,y))
     for (h,c,(x,y)) in possible:
         #if x<sizex and y<sizey:
-        if x <= sizey and y <= sizex and grid[x][y]:
+        if x < sizey and y < sizex and grid[x][y]:
             starque.append((h,c,(x,y)))
     ind = starque.index(min(starque))
     nxt = starque.pop(ind)
