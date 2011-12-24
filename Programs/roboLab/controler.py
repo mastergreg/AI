@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 24 Dec 2011 08:52:57 PM EET
+#* Last Modified : Sat 24 Dec 2011 09:46:12 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -15,9 +15,12 @@
 
 import inparser
 import astar
+import sys
 
 def main():
-    (r1,r2,field) = inparser.parseInput()
+    f=open(sys.argv[1],"r")
+    (r1,r2,field) = inparser.parseInput(f)
+    f.close()
     print r1,r2
     astar.astar(r1,r2,field)
 

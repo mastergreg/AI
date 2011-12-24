@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 24 Dec 2011 09:32:38 PM EET
+#* Last Modified : Sat 24 Dec 2011 10:08:33 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -24,6 +24,8 @@ def nextNodes((a,b)):
 
 def astar(startpoint,finishpoint,grid):
     starque=[]
+    sizex=len(grid)
+    sizey=len(grid[0])
     #map(lambda x:heappush(starque,x),nextNodes(startpoint))
     #no need to use heaps
     grids.printgrid(startpoint,finishpoint,grid)
@@ -31,24 +33,31 @@ def astar(startpoint,finishpoint,grid):
     #each point has these characteristics
     #(heuristic,cost,(x,y))
     for (h,c,(x,y)) in possible:
-        if grid[x][y]:
+        #if x<sizex and y<sizey:
+        if x <= sizey and y <= sizex and grid[x][y]:
             starque.append((h,c,(x,y)))
     ind = starque.index(min(starque))
     nxt = starque.pop(ind)
+    current = nxt[2]
+    currentCost = nxt[1]
+    grids.printgrid(current,finishpoint,grid)
+    print nxt
+    dummy = raw_input("How does it look?? ")
 
-    while(nxt[2]!=finishpoint):
-        current = nxt[2]
-        currentCost = nxt[1]
-        grids.printgrid(current,finishpoint,grid)
-        possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost,currentCost+1,x),nextNodes(current))
+    while(current!=tuple(finishpoint)):
+        possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #each point has these characteristics
         #(heuristic,cost,(x,y))
         for (h,c,(x,y)) in possible:
-            if grid[x][y]:
+            if x < sizex and y < sizey and grid[x][y]:
                 starque.append((h,c,(x,y)))
         ind = starque.index(min(starque))
         nxt = starque.pop(ind)
-    print starque
+        current = nxt[2]
+        currentCost = nxt[1]
+        grids.printgrid(current,finishpoint,grid)
+        print nxt
+        dummy = raw_input("How does it look?? ")
 
 
     
