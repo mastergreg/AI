@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 24 Dec 2011 09:46:12 PM EET
+#* Last Modified : Sun 25 Dec 2011 12:00:09 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -21,7 +21,6 @@ def main():
     f=open(sys.argv[1],"r")
     (r1,r2,field) = inparser.parseInput(f)
     f.close()
-    print r1,r2
     astar.astar(r1,r2,field)
 
 
