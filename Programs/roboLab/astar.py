@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 10:00:55 AM EET
+#* Last Modified : Sun 25 Dec 2011 10:26:44 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -79,6 +79,7 @@ def astar(startpoint,finishpoint,grid):
         current = nxt[2]
         currentCost = nxt[1]
         #grids.printgrid(current,finishpoint,grid)
+    print "Found it after %d iterations" %len(passedlist)
 
     finalists=[]
     i = tuple(finishpoint)
