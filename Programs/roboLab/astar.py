@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 09:56:35 AM EET
+#* Last Modified : Sun 25 Dec 2011 10:00:55 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -86,9 +86,9 @@ def astar(startpoint,finishpoint,grid):
         finalists.append(i)
         i = ansestors[i]
     finalists.reverse()
-    print "1rst step " ,i
-    for i in finalists:
-        print "next step ",i
+    #print "1rst step " ,i
+    #for i in finalists:
+    #    print "next step ",i
     grids.flushgrid(grid)
     grids.printpath(tuple(startpoint),tuple(finishpoint),finalists)
 
