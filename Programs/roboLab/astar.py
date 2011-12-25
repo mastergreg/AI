@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 12:00:33 AM EET
+#* Last Modified : Sun 25 Dec 2011 09:56:35 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -85,10 +85,12 @@ def astar(startpoint,finishpoint,grid):
     while i !=tuple(startpoint):
         finalists.append(i)
         i = ansestors[i]
-    finalists.append(i)
     finalists.reverse()
+    print "1rst step " ,i
     for i in finalists:
         print "next step ",i
+    grids.flushgrid(grid)
+    grids.printpath(tuple(startpoint),tuple(finishpoint),finalists)
 
 
     #for i in checklist:
