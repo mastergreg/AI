@@ -7,13 +7,13 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 10:26:44 AM EET
+#* Last Modified : Sun 25 Dec 2011 11:32:36 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
-import grids
+from multiprocessing import Queue
 
 def manthatanDist(point1,point2):
     return abs(point1[0][0]-point2[0])+abs(point1[0][1]-point2[1])
@@ -36,37 +36,28 @@ def putinlist(starque,(h,c,xy)):
             
 
 
-def astar(startpoint,finishpoint,grid):
+def astar(q,startpoint,finishpoint,grid):
+    ansestors={}
+    passedlist=[]
+    passedlist.append(startpoint)
     starque=[]
     sizex=len(grid)
     sizey=len(grid[0])
-    #map(lambda x:heappush(starque,x),nextNodes(startpoint))
-    #no need to use heaps
-    #grids.printgrid(startpoint,finishpoint,grid)
     possible = map(lambda x:(manthatanDist(x,finishpoint)+1,1,x),nextNodes(startpoint))
     #each point has these characteristics
-    #(heuristic,cost,(x,y))
+    #(heuristic,cost,((x,y),father))
     for (h,c,((x,y),father)) in possible:
-        #if x<sizex and y<sizey:
         if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y]:
+            passedlist.append((x,y))
+            ansestors[(x,y)]=father
             starque.append((h,c,(x,y)))
     ind = starque.index(min(starque))
     nxt = starque.pop(ind)
     current = nxt[2]
     currentCost = nxt[1]
-    #grids.printgrid(current,finishpoint,grid)
-    #print nxt
-    #dummy = raw_input("How does it look?? ")
-    passedlist=[]
-    passedlist.append(tuple(startpoint))
-    passedlist.append(current)
-    ansestors={}
-    ansestors[current]=tuple(startpoint)
 
-    while(current!=tuple(finishpoint)):
+    while(current!=finishpoint):
         possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
-        #each point has these characteristics
-        #(heuristic,cost,(x,y))
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y]:
                 #starque = putinlist(starque,(h,c,(x,y)))
@@ -78,26 +69,13 @@ def astar(startpoint,finishpoint,grid):
         nxt = starque.pop(ind)
         current = nxt[2]
         currentCost = nxt[1]
-        #grids.printgrid(current,finishpoint,grid)
     print "Found it after %d iterations" %len(passedlist)
 
     finalists=[]
-    i = tuple(finishpoint)
-    while i !=tuple(startpoint):
-        finalists.append(i)
+    i =finishpoint
+    finalists.append(i)
+    while i !=startpoint:
         i = ansestors[i]
+        finalists.append(i)
     finalists.reverse()
-    #print "1rst step " ,i
-    #for i in finalists:
-    #    print "next step ",i
-    grids.flushgrid(grid)
-    grids.printpath(tuple(startpoint),tuple(finishpoint),finalists)
-
-
-    #for i in checklist:
-    #    print i
-        #dummy = raw_input("How does it look?? ")
-
-
-    
-
+    q.put(finalists)

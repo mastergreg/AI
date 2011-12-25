@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 10:00:01 AM EET
+#* Last Modified : Sun 25 Dec 2011 11:14:25 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -31,12 +31,14 @@ def flushgrid(grid):
     for i in grid:
         lgrid.append(map(revertMap,list(i)))
 
-def printpath((sx,sy),(fx,fy),finalists):
+def designpath(color,(sx,sy),(fx,fy),finalists):
     global lgrid
     for (x,y) in finalists:
-        lgrid[x][y]="\033[1;34m*\033[0m"
+        lgrid[x][y]="\033["+color+"m*\033[0m"
     lgrid[sx][sy]="S"
     lgrid[fx][fy]="F"
+
+def printpath():
     for i in lgrid:
         print "".join(i)
 
