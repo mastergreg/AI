@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 20:45:40 2012
+#* Last Modified : Wed  8 Feb 21:35:25 2012
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -17,9 +17,11 @@ def retbools(st):
     a=[]
     for i in st:
         if i == 'X':
-            a.append(-1)
+            #a.append(-1)
+            a.append(False)
         elif i=='O':
-            a.append(0)
+            #a.append(0)
+            a.append(True)
     return a
 
 

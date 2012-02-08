@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed 08 Feb 2012 09:15:47 PM EET
+#* Last Modified : Wed  8 Feb 21:27:58 2012
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -33,12 +33,10 @@ def putinlist(starque,(h,c,xy)):
             (sh,sc,sxy) = min((sh,sc,sxy),(h,c,xy))
             starque.append((sh,sc,sxy))
             return starque
-            
-
 
 def astar(q,startpoint,finishpoint,grid):
-    ansestors={}
-    #ansestors is a dictionary which stores the ansestors of each point
+    ancestors={}
+    #ancestors is a dictionary which stores the ancestors of each point
     #this will be used in the end to rebuild the path
     passedlist=[]
     passedlist.append(startpoint)
@@ -56,7 +54,7 @@ def astar(q,startpoint,finishpoint,grid):
         #now should be grid[x][y]==0 ??
         if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y]:
             passedlist.append((x,y))
-            ansestors[(x,y)]=father
+            ancestors[(x,y)]=father
             starque.append((h,c,(x,y)))
     ind = starque.index(min(starque))
     #find index of touple with the lowest heuristic+cost
@@ -79,8 +77,8 @@ def astar(q,startpoint,finishpoint,grid):
                 if(x,y) not in passedlist:
                     passedlist.append((x,y))
                     #if i havend passed this so far
-                    #then store it and insert the coordinates in ansestors dictionary
-                    ansestors[(x,y)]=father
+                    #then store it and insert the coordinates in ancestors dictionary
+                    ancestors[(x,y)]=father
                     starque.append((h,c,(x,y)))
                 #if i have passed this already then i can reach this with a lower cost
                 #so i don't need to save x,y
@@ -100,9 +98,9 @@ def astar(q,startpoint,finishpoint,grid):
     i =finishpoint
     finalists.append(i)
     #starting from the end build the path list
-    #following the directions in the ansestors dictionary
+    #following the directions in the ancestors dictionary
     while i !=startpoint:
-        i = ansestors[i]
+        i = ancestors[i]
         finalists.append(i)
     finalists.reverse()
     #reverse the path so it starts from the beginning

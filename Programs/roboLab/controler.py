@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 11:28:21 AM EET
+#* Last Modified : Wed  8 Feb 21:34:30 2012
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -24,6 +24,9 @@ from grids import flushgrid,printpath,designpath
 #psyco.full()
 
 def main():
+    if len(sys.argv) == 1:
+        print "Usage: ./controler.py <inputfile>"
+        return -1
     f=open(sys.argv[1],"r")
     (target,r1,r2,field) = parseInput(f)
     f.close()
