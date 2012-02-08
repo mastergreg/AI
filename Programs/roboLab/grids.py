@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 23:03:29 EET
+#* Last Modified : Wed  8 Feb 2012 23:17:17 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -18,9 +18,9 @@ lgrid=[]
 def revertMap(b):
     if b=="@" or b=="#":
         return b
-    elif b:
+    elif b>=0:
         return "-"
-    elif not b:
+    elif b<0:
         return "\033[0;31mx\033[0m"
     else:
         return b
