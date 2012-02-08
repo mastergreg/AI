@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 11:32:36 AM EET
+#* Last Modified : Wed 08 Feb 2012 09:15:47 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -38,44 +38,73 @@ def putinlist(starque,(h,c,xy)):
 
 def astar(q,startpoint,finishpoint,grid):
     ansestors={}
+    #ansestors is a dictionary which stores the ansestors of each point
+    #this will be used in the end to rebuild the path
     passedlist=[]
     passedlist.append(startpoint)
+    #passedlist contains nodes that have been processed already
     starque=[]
     sizex=len(grid)
+    #num of rows
     sizey=len(grid[0])
+    #num of columns
     possible = map(lambda x:(manthatanDist(x,finishpoint)+1,1,x),nextNodes(startpoint))
     #each point has these characteristics
     #(heuristic,cost,((x,y),father))
     for (h,c,((x,y),father)) in possible:
+        #checking for bounds and then checking if grid[x][y]==True
+        #now should be grid[x][y]==0 ??
         if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y]:
             passedlist.append((x,y))
             ansestors[(x,y)]=father
             starque.append((h,c,(x,y)))
     ind = starque.index(min(starque))
+    #find index of touple with the lowest heuristic+cost
     nxt = starque.pop(ind)
+    #remove if from the queue
+    #and store it in nxt
+    #nxt = (minh,c,((x,y),father))
     current = nxt[2]
     currentCost = nxt[1]
+    #current cost is the cost so far that is stored in nxt
 
     while(current!=finishpoint):
+        #untill you find the end
         possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
+        #find the next possible list
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y]:
+                #check what is in possible list, make sure its sane
                 #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:
                     passedlist.append((x,y))
+                    #if i havend passed this so far
+                    #then store it and insert the coordinates in ansestors dictionary
                     ansestors[(x,y)]=father
                     starque.append((h,c,(x,y)))
+                #if i have passed this already then i can reach this with a lower cost
+                #so i don't need to save x,y
+
         ind = starque.index(min(starque))
+        #find index of touple with the lowest heuristic+cost
         nxt = starque.pop(ind)
+        #remove if from the queue
+        #and store it in nxt
+        #nxt = (minh,c,((x,y),father))
         current = nxt[2]
         currentCost = nxt[1]
+        #current cost is the cost so far that is stored in nxt
     print "Found it after %d iterations" %len(passedlist)
 
     finalists=[]
     i =finishpoint
     finalists.append(i)
+    #starting from the end build the path list
+    #following the directions in the ansestors dictionary
     while i !=startpoint:
         i = ansestors[i]
         finalists.append(i)
     finalists.reverse()
+    #reverse the path so it starts from the beginning
     q.put(finalists)
+    #put it in the queue
