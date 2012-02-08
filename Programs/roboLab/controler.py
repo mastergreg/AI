@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed 08 Feb 2012 09:44:04 PM EET
+#* Last Modified : Wed 08 Feb 2012 09:53:45 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -30,16 +30,8 @@ def main():
     f=open(sys.argv[1],"r")
     (target,r1,r2,field) = parseInput(f)
     f.close()
-    q1=Queue()
-    q2=Queue()
-    p1 = Process(target=astar,args=(q1,r1,target,field,))
-    p2 = Process(target=astar,args=(q2,r2,target,field,))
-    p1.start()
-    p2.start()
-    finalists1 = q1.get()
-    p1.join()
-    finalists2 = q2.get()
-    p2.join()
+    finalists1 = astar(r1,target,field)
+    finalists2 = astar(r2,target,field)
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)

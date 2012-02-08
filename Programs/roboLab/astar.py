@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 21:40:23 2012
+#* Last Modified : Wed 08 Feb 2012 09:54:31 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -34,7 +34,7 @@ def putinlist(starque,(h,c,xy)):
             starque.append((sh,sc,sxy))
             return starque
 
-def astar(q,startpoint,finishpoint,grid):
+def astar(startpoint,finishpoint,grid):
     ancestors={}
     #ancestors is a dictionary which stores the ancestors of each point
     #this will be used in the end to rebuild the path
@@ -104,5 +104,5 @@ def astar(q,startpoint,finishpoint,grid):
         finalists.append(i)
     finalists.reverse()
     #reverse the path so it starts from the beginning
-    q.put(finalists)
+    return finalists
     #put it in the queue
