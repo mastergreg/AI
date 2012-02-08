@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu 09 Feb 2012 01:16:46 AM EET
+#* Last Modified : Thu 09 Feb 2012 01:31:20 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -51,8 +51,6 @@ def astar(startpoint,finishpoint,grid):
         #checking for bounds and then checking if grid[x][y]==True
         #now should be grid[x][y]==0 ??
         if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y] != -1:
-            #if grid[x][y] == c+1:
-                #print "Conflict in [",x,",",y,"] , Robot #2 waiting.."
             passedlist.append((x,y))
             ancestors[(x,y)]=father
             starque.append((h,c,(x,y)))
@@ -60,7 +58,7 @@ def astar(startpoint,finishpoint,grid):
     ind = starque.index(min(starque))
     (h,c,(x,y)) = starque.pop(ind)
     while(grid[x][y] == c + 1 ):
-        print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
+        print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
         starque.append((h+1,c+1,(x,y)))
         ind = starque.index(min(starque))
         print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
@@ -76,17 +74,15 @@ def astar(startpoint,finishpoint,grid):
     current = nxt[2]
     currentCost = nxt[1]
     #current cost is the cost so far that is stored in nxt
+    #goal = zip( *nextNodes( finishpoint ) )[0]
+    #print goal
 
-    crash = False
     while(current!=finishpoint):
         #untill you find the end
         possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #find the next possible list
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y] != -1:
-                if grid[x][y] == c+1 and (crash == False):
-                    print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
-                    crash = True
                 #check what is in possible list, make sure its sane
                 #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:
@@ -101,7 +97,7 @@ def astar(startpoint,finishpoint,grid):
         ind = starque.index(min(starque))
         (h,c,(x,y)) = starque.pop(ind)
         while(grid[x][y] == c + 1 ):
-            print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
+            print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
             starque.append((h+1,c+1,(x,y)))
             ind = starque.index(min(starque))
             print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
@@ -109,8 +105,6 @@ def astar(startpoint,finishpoint,grid):
 
             
         #find index of touple with the lowest heuristic+cost
-        #ind = starque.index(min(starque))
-        ##nxt = starque.pop(ind)
         nxt = (h,c,(x,y))
         #remove if from the queue
         #and store it in nxt
