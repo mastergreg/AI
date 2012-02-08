@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 22:59:35 EET
+#* Last Modified : Thu  9 Feb 2012 00:05:55 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -29,14 +29,13 @@ def main():
     f=open(sys.argv[1],"r")
     (target,r1,r2,field) = parseInput(f)
     f.close()
-    finalists1 = astar(r1,target,field)
+    finalists1 = astar(r1,target,field,0)
     field = modifygrid(finalists1,field)
-    finalists2 = astar(r2,target,field)
+    finalists2 = astar(r2,target,field,1)
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)
     printpath()
-
 
 if __name__=="__main__":
     main()
