@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed 08 Feb 2012 09:54:31 PM EET
+#* Last Modified : Wed  8 Feb 2012 22:44:10 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -52,7 +52,7 @@ def astar(startpoint,finishpoint,grid):
     for (h,c,((x,y),father)) in possible:
         #checking for bounds and then checking if grid[x][y]==True
         #now should be grid[x][y]==0 ??
-        if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y]:
+        if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y] != -1 and grid[x][y] != c:
             passedlist.append((x,y))
             ancestors[(x,y)]=father
             starque.append((h,c,(x,y)))
@@ -71,7 +71,7 @@ def astar(startpoint,finishpoint,grid):
         possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #find the next possible list
         for (h,c,((x,y),father)) in possible:
-            if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y]:
+            if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y] != -1 and grid[x][y] != c:
                 #check what is in possible list, make sure its sane
                 #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:

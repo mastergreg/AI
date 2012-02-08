@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sun 25 Dec 2011 11:14:25 AM EET
+#* Last Modified : Wed  8 Feb 2012 22:38:51 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -42,8 +42,6 @@ def printpath():
     for i in lgrid:
         print "".join(i)
 
-
-
 def printgrid((cx,cy),(fx,fy),grid):
     global lgrid
     if not lgrid:
@@ -54,3 +52,9 @@ def printgrid((cx,cy),(fx,fy),grid):
     for i in lgrid:
         print "".join(i)
     print "----"
+
+def modifygrid(finalists,grid):
+    i=1
+    for (x,y) in finalists:
+        grid[x][y]=i
+        i+=1

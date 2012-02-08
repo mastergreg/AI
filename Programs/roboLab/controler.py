@@ -3,22 +3,21 @@
 #
 #* File Name : controler.py
 #
-#* Purpose :
+#* Purpose : 1st assignment in Artificial Intelligence
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed 08 Feb 2012 09:53:45 PM EET
+#* Last Modified : Wed  8 Feb 2012 22:34:56 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
-from multiprocessing import Process,Queue
 import sys
 
 from inparser import parseInput
 from astar import astar
-from grids import flushgrid,printpath,designpath
+from grids import flushgrid,printpath,designpath,modifygrid
 #import psyco
 
 #psyco.full()
@@ -31,6 +30,7 @@ def main():
     (target,r1,r2,field) = parseInput(f)
     f.close()
     finalists1 = astar(r1,target,field)
+    #field = modifygrid(finalists1,field)
     finalists2 = astar(r2,target,field)
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
@@ -40,4 +40,3 @@ def main():
 
 if __name__=="__main__":
     main()
-
