@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 22:38:51 EET
+#* Last Modified : Wed  8 Feb 2012 23:03:29 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -58,3 +58,4 @@ def modifygrid(finalists,grid):
     for (x,y) in finalists:
         grid[x][y]=i
         i+=1
+    return grid

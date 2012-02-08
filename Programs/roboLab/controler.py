@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 22:34:56 EET
+#* Last Modified : Wed  8 Feb 2012 22:59:35 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -30,7 +30,7 @@ def main():
     (target,r1,r2,field) = parseInput(f)
     f.close()
     finalists1 = astar(r1,target,field)
-    #field = modifygrid(finalists1,field)
+    field = modifygrid(finalists1,field)
     finalists2 = astar(r2,target,field)
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
