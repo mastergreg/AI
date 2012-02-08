@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 00:56:40 EET
+#* Last Modified : Thu 09 Feb 2012 01:16:46 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -56,9 +56,20 @@ def astar(startpoint,finishpoint,grid):
             passedlist.append((x,y))
             ancestors[(x,y)]=father
             starque.append((h,c,(x,y)))
+
     ind = starque.index(min(starque))
+    (h,c,(x,y)) = starque.pop(ind)
+    while(grid[x][y] == c + 1 ):
+        print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
+        starque.append((h+1,c+1,(x,y)))
+        ind = starque.index(min(starque))
+        print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
+        (h,c,(x,y)) = starque.pop(ind)
+
+    #ind = starque.index(min(starque))
     #find index of touple with the lowest heuristic+cost
-    nxt = starque.pop(ind)
+    #nxt = starque.pop(ind)
+    nxt = (h,c,(x,y))
     #remove if from the queue
     #and store it in nxt
     #nxt = (minh,c,((x,y),father))
@@ -88,13 +99,19 @@ def astar(startpoint,finishpoint,grid):
                 #so i don't need to save x,y
 
         ind = starque.index(min(starque))
-        #find index of touple with the lowest heuristic+cost
-        (h,c,x,y)) = starque[ind]
-        if grid[x][y] == c+1:
-            starque[ind][0] +=1
-            starque[ind][1] +=1
+        (h,c,(x,y)) = starque.pop(ind)
+        while(grid[x][y] == c + 1 ):
             print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
-        nxt = starque.pop(ind)
+            starque.append((h+1,c+1,(x,y)))
+            ind = starque.index(min(starque))
+            print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
+            (h,c,(x,y)) = starque.pop(ind)
+
+            
+        #find index of touple with the lowest heuristic+cost
+        #ind = starque.index(min(starque))
+        ##nxt = starque.pop(ind)
+        nxt = (h,c,(x,y))
         #remove if from the queue
         #and store it in nxt
         #nxt = (minh,c,((x,y),father))
