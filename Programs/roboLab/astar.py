@@ -7,13 +7,11 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 00:32:40 EET
+#* Last Modified : Thu  9 Feb 2012 00:41:46 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
-
-from multiprocessing import Queue
 
 def manthatanDist(point1,point2):
     return abs(point1[0][0]-point2[0])+abs(point1[0][1]-point2[1])
@@ -68,14 +66,16 @@ def astar(startpoint,finishpoint,grid):
     currentCost = nxt[1]
     #current cost is the cost so far that is stored in nxt
 
+    crash = False
     while(current!=finishpoint):
         #untill you find the end
         possible = map(lambda x:(manthatanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #find the next possible list
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y] != -1:
-                if grid[x][y] == c+1:
-                    print "Conflict in [",x,",",y,"] , Robot #2 waiting.."
+                if grid[x][y] == c+1 and (crash == False):
+                    print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
+                    crash = True
                 #check what is in possible list, make sure its sane
                 #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:
