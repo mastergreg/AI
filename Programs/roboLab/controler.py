@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 21:34:30 2012
+#* Last Modified : Wed 08 Feb 2012 09:44:04 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -25,7 +25,7 @@ from grids import flushgrid,printpath,designpath
 
 def main():
     if len(sys.argv) == 1:
-        print "Usage: ./controler.py <inputfile>"
+        print "Usage: %s <inputfile>" %sys.argv[0]
         return -1
     f=open(sys.argv[1],"r")
     (target,r1,r2,field) = parseInput(f)
