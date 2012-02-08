@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 21:27:58 2012
+#* Last Modified : Wed  8 Feb 21:40:23 2012
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -42,10 +42,10 @@ def astar(q,startpoint,finishpoint,grid):
     passedlist.append(startpoint)
     #passedlist contains nodes that have been processed already
     starque=[]
-    sizex=len(grid)
     #num of rows
-    sizey=len(grid[0])
+    sizex=len(grid)
     #num of columns
+    sizey=len(grid[0])
     possible = map(lambda x:(manthatanDist(x,finishpoint)+1,1,x),nextNodes(startpoint))
     #each point has these characteristics
     #(heuristic,cost,((x,y),father))
