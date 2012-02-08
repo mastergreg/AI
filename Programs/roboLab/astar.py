@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 00:41:46 EET
+#* Last Modified : Thu  9 Feb 2012 00:56:40 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -89,6 +89,11 @@ def astar(startpoint,finishpoint,grid):
 
         ind = starque.index(min(starque))
         #find index of touple with the lowest heuristic+cost
+        (h,c,x,y)) = starque[ind]
+        if grid[x][y] == c+1:
+            starque[ind][0] +=1
+            starque[ind][1] +=1
+            print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 waiting.."
         nxt = starque.pop(ind)
         #remove if from the queue
         #and store it in nxt
