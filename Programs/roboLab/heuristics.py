@@ -7,7 +7,7 @@
 #
 #* Creation Date : 09-02-2012
 #
-#* Last Modified : Thu 09 Feb 2012 06:49:17 PM EET
+#* Last Modified : Thu  9 Feb 2012 22:09:12 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -15,7 +15,6 @@
 
 def manhattanDist(point1,point2):
     return abs(point1[0][0]-point2[0])+abs(point1[0][1]-point2[1])
-
 
 def squaredDist(point1,point2):
     return (point1[0][0]-point2[0])**2 + (point1[0][1]-point2[1])**2

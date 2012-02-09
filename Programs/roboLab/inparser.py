@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 22:56:30 EET
+#* Last Modified : Thu  9 Feb 2012 22:08:54 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -16,12 +16,11 @@
 def retbools(st):
     a=[]
     for i in st:
+        #'X' marks obstacle, 'O' marks open space
         if i == 'X':
             a.append(-1)
-            #a.append(False)
         elif i=='O':
             a.append(0)
-            #a.append(True)
     return a
 
 def parseInput(f):
