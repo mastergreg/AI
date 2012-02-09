@@ -7,14 +7,12 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 18:26:50 EET
+#* Last Modified : Thu 09 Feb 2012 06:52:30 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
-def manhattanDist(point1,point2):
-    return abs(point1[0][0]-point2[0])+abs(point1[0][1]-point2[1])
 
 def nextNodes((a,b)):
     return [((a-1,b),(a,b)),((a,b-1),(a,b)),((a+1,b),(a,b)),((a,b+1),(a,b))]
@@ -32,7 +30,7 @@ def putinlist(starque,(h,c,xy)):
             starque.append((sh,sc,sxy))
             return starque
 
-def astar(startpoint,finishpoint,grid):
+def astar(startpoint,finishpoint,grid,heuristic):
     ancestors={}
     #ancestors is a dictionary which stores the ancestors of each point
     #this will be used in the end to rebuild the path
@@ -44,7 +42,7 @@ def astar(startpoint,finishpoint,grid):
     sizex=len(grid)
     #num of columns
     sizey=len(grid[0])
-    possible = map(lambda x:(manhattanDist(x,finishpoint)+1,1,x),nextNodes(startpoint))
+    possible = map(lambda x:(heuristic(x,finishpoint)+1,1,x),nextNodes(startpoint))
     #each point has these characteristics
     #(heuristic,cost,((x,y),father))
     for (h,c,((x,y),father)) in possible:
@@ -79,7 +77,7 @@ def astar(startpoint,finishpoint,grid):
 
     while(current!=finishpoint):
         #untill you find the end
-        possible = map(lambda x:(manhattanDist(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
+        possible = map(lambda x:(heuristic(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #find the next possible list
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y] != -1:

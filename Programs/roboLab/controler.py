@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 15:19:37 EET
+#* Last Modified : Thu 09 Feb 2012 06:51:57 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -17,6 +17,7 @@ import sys
 
 from inparser import parseInput
 from astar import astar
+import heuristics
 from grids import flushgrid,printpath,designpath,modifygrid
 #import psyco
 
@@ -29,9 +30,9 @@ def main():
     f=open(sys.argv[1],"r")
     (target,r1,r2,field) = parseInput(f)
     f.close()
-    finalists1 = astar(r1,target,field)
+    finalists1 = astar(r1,target,field,heuristics.manhattanDist)
     field = modifygrid(finalists1,field)
-    finalists2 = astar(r2,target,field)
+    finalists2 = astar(r2,target,field,heuristics.manhattanDist)
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)
