@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 15:19:37 EET
+#* Last Modified : Thu  9 Feb 2012 18:39:50 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -36,6 +36,9 @@ def main():
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)
     printpath()
+    print "Max length in steps:", max(len(finalists1),len(finalists2))
+    print "finalists 1 len: ", len(finalists1)
+    print "finalists 2 len: ", len(finalists2)
 
 if __name__=="__main__":
     main()
