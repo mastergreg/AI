@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu 09 Feb 2012 01:16:11 PM EET
+#* Last Modified : Thu 09 Feb 2012 01:38:45 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -16,6 +16,7 @@
 lgrid=[]
 blockChar = unichr(0x258A)
 joinedColor = "0;32"
+names = "Vasilis Gerakaris - Gregory Liras"
 
 def revertMap(b):
     if b=="@" or b=="#":
@@ -23,7 +24,7 @@ def revertMap(b):
     elif b>=0:
         return " "
     elif b<0:
-        return "\033[0;31m"+blockChar+"\033[0m"
+        return "\033[41m \033[0m"
     else:
         return b
 
@@ -44,8 +45,11 @@ def designpath(color,(sx,sy),(fx,fy),finalists):
     lgrid[fx][fy]="F"
 
 def printpath():
+
+    print "\033[47m"+(" "*(len(lgrid[0])+2))+"\033[0m"
     for i in lgrid:
-        print "".join(i)
+        print "\033[47m \033[0m"+"".join(i)+"\033[47m \033[0m"
+    print "\033[47m\033[1;34m"+(" "*(len(lgrid[0])+2-len(names)))+names+"\033[0m"
 
 def printgrid((cx,cy),(fx,fy),grid):
     global lgrid
@@ -54,6 +58,7 @@ def printgrid((cx,cy),(fx,fy),grid):
             lgrid.append(map(revertMap,i))
     lgrid[cx][cy]="@"
     lgrid[fx][fy]="#"
+
     for i in lgrid:
         print "".join(i)
     print "----"
