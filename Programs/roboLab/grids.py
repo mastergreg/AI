@@ -7,21 +7,22 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Wed  8 Feb 2012 23:17:17 EET
+#* Last Modified : Thu  9 Feb 2012 13:03:08 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
 lgrid=[]
+blockChar = unichr(0x258A)
 
 def revertMap(b):
     if b=="@" or b=="#":
         return b
     elif b>=0:
-        return "-"
+        return " "
     elif b<0:
-        return "\033[0;31mx\033[0m"
+        return "\033[0;31m"+blockChar+"\033[0m"
     else:
         return b
 
