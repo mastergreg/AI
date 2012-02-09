@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 13:03:08 EET
+#* Last Modified : Thu 09 Feb 2012 01:16:11 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -15,6 +15,7 @@
 
 lgrid=[]
 blockChar = unichr(0x258A)
+joinedColor = "0;32"
 
 def revertMap(b):
     if b=="@" or b=="#":
@@ -35,7 +36,10 @@ def flushgrid(grid):
 def designpath(color,(sx,sy),(fx,fy),finalists):
     global lgrid
     for (x,y) in finalists:
-        lgrid[x][y]="\033["+color+"m*\033[0m"
+        if ( lgrid[x][y].startswith("\033")):
+            lgrid[x][y] = "\033["+joinedColor+"m*\033[0m"
+        else:
+            lgrid[x][y]="\033["+color+"m*\033[0m"
     lgrid[sx][sy]="S"
     lgrid[fx][fy]="F"
 
