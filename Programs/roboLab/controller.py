@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 04:17:27 PM EET
+#* Last Modified : Fri 10 Feb 2012 04:44:06 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -27,8 +27,9 @@ def main():
         print "Usage: %s <inputfile> <mode (A/N)>" %sys.argv[0]
         return -1
     f=open(sys.argv[1],"r")
-    (target,r1,r2,field) = parseInput(f)
+    (target,r1,r2,initialfield) = parseInput(f)
     f.close()
+    field = map(list,initialfield)
     modeCheck = sys.argv[2]
     while modeCheck != "A" and modeCheck != "N" and modeCheck != "a" and modeCheck != "n":
         print "Wrong mode, choose A for admissible heuristic or N for non-admissible"
@@ -43,10 +44,10 @@ def main():
     print "\033[1;34m Robot1 path \n\033[1;33m Robot2 path \n\033[0;32m Joined path \033[0m"
     print "\n \033[0;34m ======= Robot 2 plays 'nice' ======= \033[0m"
     total=0
-    (finalists1,nodes) = astar(r1,target,field,heuristic)
+    (finalists1,nodes) = astar(r1,target,field,heuristic,1)
     total += nodes
     field = modifygrid(finalists1,field)
-    (finalists2,nodes) = astar(r2,target,field,heuristic)
+    (finalists2,nodes) = astar(r2,target,field,heuristic,2)
     total += nodes
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
@@ -58,10 +59,12 @@ def main():
     print "\t Robot 2 (nice) took:\t", len(finalists2)-1, " steps"
     flushgrid(field)
     print "\n \033[0;34m ======= Robot 1 plays 'nice' ======= \033[0m"
-    (finalists2,nodes) = astar(r2,target,field,heuristic)
+    field = map(list,initialfield)
+    modeCheck = sys.argv[2]
+    (finalists2,nodes) = astar(r2,target,field,heuristic,2)
     total += nodes
     field = modifygrid(finalists2,field)
-    (finalists1,nodes) = astar(r1,target,field,heuristic)
+    (finalists1,nodes) = astar(r1,target,field,heuristic,1)
     total += nodes
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)

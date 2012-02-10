@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 04:17:27 PM EET
+#* Last Modified : Fri 10 Feb 2012 04:38:54 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -32,7 +32,7 @@ def putinlist(starque,(h,c,xy)):
             starque.append((sh,sc,sxy))
             return starque
 
-def astar(startpoint,finishpoint,grid,heuristic):
+def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
     ancestors={}
     #ancestors is a dictionary which stores the ancestors of each point
     #this will be used in the end to rebuild the path
@@ -59,11 +59,11 @@ def astar(startpoint,finishpoint,grid,heuristic):
     (h,c,(x,y)) = starque.pop(ind)
     #Conflict detection on first step
     while(grid[x][y] == c + 1 ):
-        print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
+        print "Conflict in [{0},{1}] on step {2} , Robot #{3} recalculating..".format(x,y,c,robotID)
         starque.append((h+1,c+1,(x,y)))
         ind = starque.index(min(starque))
         #Consideration of alternative path
-        print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
+        print "Robot #{0} trying..".format(robotID),starque[ind][2][0],starque[ind][2][1]
         (h,c,(x,y)) = starque.pop(ind)
 
     #ind = starque.index(min(starque))
@@ -100,11 +100,11 @@ def astar(startpoint,finishpoint,grid,heuristic):
         (h,c,(x,y)) = starque.pop(ind)
         #Conflict detection for all steps
         while(grid[x][y] == c + 1 ):
-            print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
+            print "Conflict in [{0},{1}] on step {2} , Robot #{3} recalculating..".format(x,y,c,robotID)
             starque.append((h+1,c+1,(x,y)))
             ind = starque.index(min(starque))
             #Consideration of alternative paths
-            print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
+            print "Robot #{0} trying..".format(robotID),starque[ind][2][0],starque[ind][2][1]
             (h,c,(x,y)) = starque.pop(ind)
 
 
