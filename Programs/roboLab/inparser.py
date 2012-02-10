@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 10:05:34 EET
+#* Last Modified : Fri 10 Feb 2012 14:33:24 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -25,8 +25,8 @@ def retbools(st):
 
 def parseInput(f):
     lines = int(f.readline().split()[0])
-    target = tuple(map(int,f.readline().split()))
     robo1_initstate = tuple(map(int,f.readline().split()))
     robo2_initstate = tuple(map(int,f.readline().split()))
+    target = tuple(map(int,f.readline().split()))
     text = map(retbools,f.readlines())
     return (target,robo1_initstate,robo2_initstate,text)

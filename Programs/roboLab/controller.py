@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 11:11:17 EET
+#* Last Modified : Fri 10 Feb 2012 14:30:12 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -40,9 +40,12 @@ def main():
     print "\nLEGEND:"
     print "\033[1;34m Robot1 path \n\033[1;33m Robot2 path \n\033[0;32m Joined path \033[0m"
     print "\n \033[0;34m ======= Robot 2 plays 'nice' ======= \033[0m"
-    finalists1 = astar(r1,target,field,heuristic)
+    total=0
+    (finalists1,nodes) = astar(r1,target,field,heuristic)
+    total += nodes
     field = modifygrid(finalists1,field)
-    finalists2 = astar(r2,target,field,heuristic)
+    (finalists2,nodes) = astar(r2,target,field,heuristic)
+    total += nodes
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)
@@ -53,9 +56,11 @@ def main():
     print "\t Robot 2 (nice) took:\t", len(finalists2)-1, " steps"
     flushgrid(field)
     print "\n \033[0;34m ======= Robot 1 plays 'nice' ======= \033[0m"
-    finalists2 = astar(r2,target,field,heuristic)
+    (finalists2,nodes) = astar(r2,target,field,heuristic)
+    total += nodes
     field = modifygrid(finalists2,field)
-    finalists1 = astar(r1,target,field,heuristic)
+    (finalists1,nodes) = astar(r1,target,field,heuristic)
+    total += nodes
     flushgrid(field)
     designpath("1;34",r1,target,finalists1)
     designpath("1;33",r2,target,finalists2)
@@ -71,6 +76,7 @@ def main():
         print "2nd strategy (Robot 1 plays nice) is optimal"
     else:
         print "Both strategies yield same result"
+    print "Total nodes considered:", total
 
 
 if __name__=="__main__":

@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 09:54:59 EET
+#* Last Modified : Fri 10 Feb 2012 14:27:19 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -126,4 +126,4 @@ def astar(startpoint,finishpoint,grid,heuristic):
     #reverse the path so it starts from the beginning
     finalists.reverse()
     #put it in the queue
-    return finalists
+    return (finalists, len(passedlist))
