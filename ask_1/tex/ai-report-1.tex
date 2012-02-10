@@ -184,16 +184,32 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \begin{figure}[H]
 	\centering
-	\subfloat[Admissible]{\includegraphics[width=0.3\textheight]{files/Adm.png}}
-	\hspace{1cm}
-	\subfloat[NonAdmissible]{\includegraphics[width=0.3\textheight]{files/NonAdm.png}}
+\begin{minipage}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.3\textheight]{files/Adm.png}
+	\caption{Admissible ~\ref{adm}}
+	\end{minipage}
+\begin{minipage}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.3\textheight]{files/NonAdm.png}
+	\caption{Non Admissible ~\ref{nonadm}}
+	\end{minipage}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
-	\subfloat[Admissible (log)]{\includegraphics[width=0.3\textheight]{files/logAdm.png}}
-	\hspace{1cm}
-	\subfloat[NonAdmissible (log)]{\includegraphics[width=0.3\textheight]{files/logNonAdm.png}}
+\begin{minipage}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.3\textheight]{files/logAdm.png}
+	\caption{Admissible ~\ref{logadm}}
+	\end{minipage}
+\begin{minipage}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.3\textheight]{files/logNonAdm.png}
+	\caption{Non Admissible ~\ref{lognonadm}}
+	\end{minipage}
 \end{figure}
+
 
 \subsection{Εκτύπωση βημάτων-συγκρούσεων-εναλλακτικών δρόμων σε παράδειγμα
 εκτέλεσης}
@@ -225,4 +241,28 @@ Here be dragons!
 \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/controller.py}
 \end{itemize}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textheight,angle=90]{files/Adm.png}
+	\label{adm}
+	\caption{Admissible heuristic}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
+	\label{nonadm}
+	\caption{Admissible heuristic}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textheight,angle=90]{files/logAdm.png}
+	\label{logadm}
+	\caption{Admissible heuristic}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
+	\label{lognonadm}
+	\caption{Admissible heuristic}
+\end{figure}
 \end{document}
