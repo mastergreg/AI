@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 04:38:54 PM EET
+#* Last Modified : Fri 10 Feb 2012 17:50:59 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -59,11 +59,11 @@ def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
     (h,c,(x,y)) = starque.pop(ind)
     #Conflict detection on first step
     while(grid[x][y] == c + 1 ):
-        print "Conflict in [{0},{1}] on step {2} , Robot #{3} recalculating..".format(x,y,c,robotID)
+        print "Conflict in [%d,%d] on step %d , Robot #%d recalculating.." %(x,y,c,robotID)
         starque.append((h+1,c+1,(x,y)))
         ind = starque.index(min(starque))
         #Consideration of alternative path
-        print "Robot #{0} trying..".format(robotID),starque[ind][2][0],starque[ind][2][1]
+        print "Robot #%d trying.." %(robotID),starque[ind][2][0],starque[ind][2][1]
         (h,c,(x,y)) = starque.pop(ind)
 
     #ind = starque.index(min(starque))
@@ -100,11 +100,11 @@ def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
         (h,c,(x,y)) = starque.pop(ind)
         #Conflict detection for all steps
         while(grid[x][y] == c + 1 ):
-            print "Conflict in [{0},{1}] on step {2} , Robot #{3} recalculating..".format(x,y,c,robotID)
+            print "Conflict in [%d,%d] on step %d , Robot #%d recalculating.." %(x,y,c,robotID)
             starque.append((h+1,c+1,(x,y)))
             ind = starque.index(min(starque))
             #Consideration of alternative paths
-            print "Robot #{0} trying..".format(robotID),starque[ind][2][0],starque[ind][2][1]
+            print "Robot #%d trying.." %(robotID),starque[ind][2][0],starque[ind][2][1]
             (h,c,(x,y)) = starque.pop(ind)
 
 
