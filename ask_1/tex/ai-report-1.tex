@@ -6,6 +6,7 @@
 \usepackage{xltxtra}
 \usepackage[noend]{algpseudocode}
 \usepackage{algorithm}
+\usepackage{xr}
 \usepackage{hyperref}
 \usepackage{xunicode}
 \usepackage{graphicx}
@@ -19,7 +20,6 @@
 \usepackage{framed}
 \usepackage{relsize}
 \usepackage{float}
-\usepackage[numbered]{bookmark}
 \setmainfont[Mapping=TeX-text]{DejaVu Serif}
 %\setmainfont[Mapping=TeX-text]{FreeSerif}
 %\setmonofont{Andale Mono}
@@ -187,12 +187,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/Adm.png}
-	\caption{Admissible ~\ref{adm}}
+	\caption{Admissible ~\ref{fig:adm}}
 	\end{minipage}
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/NonAdm.png}
-	\caption{Non Admissible ~\ref{nonadm}}
+	\caption{Non Admissible ~\ref{fig:nonadm}}
 	\end{minipage}
 \end{figure}
 
@@ -201,12 +201,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/logAdm.png}
-	\caption{Admissible ~\ref{logadm}}
+	\caption{Admissible ~\ref{fig:logadm}}
 	\end{minipage}
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/logNonAdm.png}
-	\caption{Non Admissible ~\ref{lognonadm}}
+	\caption{Non Admissible ~\ref{fig:lognonadm}}
 	\end{minipage}
 \end{figure}
 
@@ -244,25 +244,25 @@ Here be dragons!
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/Adm.png}
-	\label{adm}
+	\label{fig:adm}
 	\caption{Admissible heuristic}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
-	\label{nonadm}
+	\label{fig:nonadm}
 	\caption{Admissible heuristic}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logAdm.png}
-	\label{logadm}
+	\label{fig:logadm}
 	\caption{Admissible heuristic}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
-	\label{lognonadm}
+	\label{fig:lognonadm}
 	\caption{Admissible heuristic}
 \end{figure}
 \end{document}
