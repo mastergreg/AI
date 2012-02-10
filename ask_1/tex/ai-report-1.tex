@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{xgreek}
+\usepackage{subfig}
 \usepackage{fancyvrb}
 \usepackage{minted}
 \usepackage{listings}
@@ -146,6 +147,16 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \subsection{Χρόνος εκτέλεσης ανά μέγεθος εισόδου}
 
+\begin{figure}[!ht]
+	\subfloat[Admissible]{\includegraphics[width=0.3\textheight]{files/Adm.png}}
+	\subfloat[NonAdmissible]{\includegraphics[width=0.3\textheight]{files/NonAdm.png}}
+\end{figure}
+\begin{figure}[!ht]
+	\subfloat[Admissible (log)]{\includegraphics[width=0.3\textheight]{files/logAdm.png}}
+	\subfloat[NonAdmissible (log)]{\includegraphics[width=0.3\textheight]{files/logNonAdm.png}}
+\end{figure}
+
+\begin{figure}[!ht]
 \begin{minipage}{0.4\textwidth}
 	\begin{tabular}{| c | c | c |}
 		\hline
@@ -161,9 +172,6 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 		\hline
 	\end{tabular}
 	\end{minipage}
-
-	Aaaaargh!\\
-
 \begin{minipage}{0.4\textwidth}
 	\begin{tabular}{| c | c | c |}
 		\hline
@@ -179,6 +187,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 		\hline
 	\end{tabular}
 	\end{minipage}
+\end{figure}
 
 \subsection{Εκτύπωση βημάτων-συγκρούσεων-εναλλακτικών δρόμων σε παράδειγμα
 εκτέλεσης}
