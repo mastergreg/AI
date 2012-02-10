@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 10:33:06 EET
+#* Last Modified : Fri 10 Feb 2012 11:11:17 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -37,7 +37,9 @@ def main():
     else:
         print "Using Square Distances as non-admissible heuristic"
         heuristic = heuristics.squaredDist
-    print "\n======= Robot 2 plays 'nice' ======="
+    print "\nLEGEND:"
+    print "\033[1;34m Robot1 path \n\033[1;33m Robot2 path \n\033[0;32m Joined path \033[0m"
+    print "\n \033[0;34m ======= Robot 2 plays 'nice' ======= \033[0m"
     finalists1 = astar(r1,target,field,heuristic)
     field = modifygrid(finalists1,field)
     finalists2 = astar(r2,target,field,heuristic)
@@ -50,7 +52,7 @@ def main():
     print "\t Robot 1 took:\t\t", len(finalists1)-1, " steps"
     print "\t Robot 2 (nice) took:\t", len(finalists2)-1, " steps"
     flushgrid(field)
-    print "\n======= Robot 1 plays 'nice' ======="
+    print "\n \033[0;34m ======= Robot 1 plays 'nice' ======= \033[0m"
     finalists2 = astar(r2,target,field,heuristic)
     field = modifygrid(finalists2,field)
     finalists1 = astar(r1,target,field,heuristic)
