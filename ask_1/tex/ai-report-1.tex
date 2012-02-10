@@ -20,15 +20,18 @@
 \usepackage{framed}
 \usepackage{relsize}
 \usepackage{float}
-\setmainfont[Mapping=TeX-text]{DejaVu Serif}
-%\setmainfont[Mapping=TeX-text]{FreeSerif}
+%\setmainfont[Mapping=TeX-text]{DejaVu Serif}
+\setmainfont[Mapping=TeX-text]{FreeSerif}
 %\setmonofont{Andale Mono}
 %}}}
 \begin{document}
+\def\thesubsection {\arabic{subsection}}
 
 \include{title/title}
 
 \section*{Υλοποίηση αλγορίθμου A*} \setcounter{section}{1}
+%{{{ Algorithm
+
 \subsection{Παρουσίαση προβλήματος και σκιαγράφηση λύσης}
 Στην άσκηση αυτή καλούμαστε να υλοποιήσουμε τον αλγόριθμο αναζήτησης Α* με
 σκοπό να οδηγηθούν με βέλτιστο τρόπο 2 ρομπότ σε ένα προκαθορισμένο σημείο
@@ -64,6 +67,11 @@ Python, επειδή μας δίνει τη δυνατότητα να επικε
 τo \underline{\href{http://psyco.sourceforge.net/}{Psyco}} έχουμε αντίστοιχο χρόνο
 εκτέλεσης όπως αν γράφαμε σε μια γλώσσα χαμηλότερου επιπέδου.
 
+%}}}
+
+
+%{{{ data structure
+
 \subsection{Επιλογή Δομών Δεδομένων}
 Στην υλοποίησή μας επιλέξαμε να χρησιμοποιήσουμε λίστες λιστών της Python,
 όπου ο κάθε κόμβος στι λίστα του A* είχε 4 στοιχεία:
@@ -80,8 +88,15 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 λίστα, αλλά όπου σε μοναδικά κλειδιά αντιστοιχίζονται (όχι απαραίτητα
 μοναδικές) τιμές.
 
+%}}}
+
+%{{{ basic structures functions
+
 \subsection{Βασικές συναρτήσεις-τελεστές}
 2
+%}}}
+
+%{{{ heyristics
 
 \subsection{Ευριστικές μέθοδοι}
 \begin{itemize}
@@ -103,6 +118,10 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 βέλτιστοι κόμβοι αποφεύγονται λόγω του αυξημένου συνολικού κόστους που
 εισάγεται με τον υπερεκτιμητή.
 \end{itemize}
+
+%}}}
+
+%{{{ conflicts
 
 \subsection{Έλεγχος και επίλυση συγκρούσεων}
 Όπως εξηγήσαμε πριν, ο αλγόριθμός μας εκτελείται πρώτα για το ένα ρομπότ, και
@@ -146,6 +165,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \end{algorithmic}
 \end{algorithm}
 
+%}}}
+
+\pagebreak
+
+%{{{ execution times
+
 \subsection{Χρόνος εκτέλεσης ανά μέγεθος εισόδου}
 
 \begin{figure}[H]
@@ -187,12 +212,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/Adm.png}
-	\caption{Admissible (figure ~\ref{fig:adm})}
+	\caption{Admissible (Σχήμα ~\ref{fig:adm})}
 	\end{minipage}
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/NonAdm.png}
-	\caption{Non Admissible (figure ~\ref{fig:nonadm})}
+	\caption{Non Admissible (Σχήμα ~\ref{fig:nonadm})}
 	\end{minipage}
 \end{figure}
 
@@ -201,22 +226,38 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/logAdm.png}
-	\caption{Admissible (figure ~\ref{fig:logadm})}
+	\caption{Admissible (Σχήμα ~\ref{fig:logadm})}
 	\end{minipage}
 \begin{minipage}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/logNonAdm.png}
-	\caption{Non Admissible (figure ~\ref{fig:lognonadm})}
+	\caption{Non Admissible (Σχήμα ~\ref{fig:lognonadm})}
 	\end{minipage}
 \end{figure}
 
+%}}}
+
+%{{{ examples
 
 \subsection{Εκτύπωση βημάτων-συγκρούσεων-εναλλακτικών δρόμων σε παράδειγμα
 εκτέλεσης}
-6
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{files/test1.png}
+	\caption{Testcase 1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{files/test5.png}
+	\caption{Testcase 5}
+\end{figure}
 
+%}}}
+
+%{{{ Source code
+
+\pagebreak
 \subsection{Πηγαίος κώδικας}
-Here be dragons!
 \begin{itemize}
 \item
 Οι συναρτήσεις που καλούνται για την ανάγνωση της εισόδου:
@@ -241,28 +282,37 @@ Here be dragons!
 \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/controller.py}
 \end{itemize}
 
+%}}}
+
+%{{{ big figures
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/Adm.png}
 	\caption{Admissible heuristic}
 	\label{fig:adm}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
 	\caption{Admissible heuristic}
 	\label{fig:nonadm}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logAdm.png}
 	\caption{Admissible heuristic}
 	\label{fig:logadm}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
 	\caption{Admissible heuristic}
 	\label{fig:lognonadm}
 \end{figure}
+
+%}}}
 \end{document}
