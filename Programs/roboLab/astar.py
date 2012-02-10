@@ -3,11 +3,11 @@
 #
 #* File Name : astar.py
 #
-#* Purpose :
+#* Purpose : Main body of A* algorithm
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu 09 Feb 2012 06:52:30 PM EET
+#* Last Modified : Fri 10 Feb 2012 09:54:59 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -55,10 +55,12 @@ def astar(startpoint,finishpoint,grid,heuristic):
 
     ind = starque.index(min(starque))
     (h,c,(x,y)) = starque.pop(ind)
+    #Conflict detection on first step
     while(grid[x][y] == c + 1 ):
         print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
         starque.append((h+1,c+1,(x,y)))
         ind = starque.index(min(starque))
+        #Consideration of alternative path
         print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
         (h,c,(x,y)) = starque.pop(ind)
 
@@ -76,7 +78,7 @@ def astar(startpoint,finishpoint,grid,heuristic):
     #print goal
 
     while(current!=finishpoint):
-        #untill you find the end
+        #until you find the end
         possible = map(lambda x:(heuristic(x,finishpoint)+currentCost+1,currentCost+1,x),nextNodes(current))
         #find the next possible list
         for (h,c,((x,y),father)) in possible:
@@ -85,32 +87,33 @@ def astar(startpoint,finishpoint,grid,heuristic):
                 #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:
                     passedlist.append((x,y))
-                    #if i havend passed this so far
+                    #if I havend passed this so far
                     #then store it and insert the coordinates in ancestors dictionary
                     ancestors[(x,y)]=father
                     starque.append((h,c,(x,y)))
-                #if i have passed this already then i can reach this with a lower cost
+                #if I have passed this already then I can reach this with a lower cost
                 #so i don't need to save x,y
 
         ind = starque.index(min(starque))
         (h,c,(x,y)) = starque.pop(ind)
+        #Conflict detection for all steps
         while(grid[x][y] == c + 1 ):
             print "Conflict in [",x,",",y,"] on step", c, ", Robot #2 recalculating.."
             starque.append((h+1,c+1,(x,y)))
             ind = starque.index(min(starque))
+            #Consideration of alternative paths
             print "Robot #2 trying..",starque[ind][2][0],starque[ind][2][1]
             (h,c,(x,y)) = starque.pop(ind)
 
 
         #find index of touple with the lowest heuristic+cost
         nxt = (h,c,(x,y))
-        #remove if from the queue
-        #and store it in nxt
+        #remove if from the queue and store it in nxt
         #nxt = (minh,c,((x,y),father))
         current = nxt[2]
         currentCost = nxt[1]
         #current cost is the cost so far that is stored in nxt
-    print "Found it after %d iterations" %len(passedlist)
+    print "Found it after %d expanded nodes" %len(passedlist)
 
     finalists=[]
     i =finishpoint
@@ -120,7 +123,7 @@ def astar(startpoint,finishpoint,grid,heuristic):
     while i !=startpoint:
         i = ancestors[i]
         finalists.append(i)
-    finalists.reverse()
     #reverse the path so it starts from the beginning
-    return finalists
+    finalists.reverse()
     #put it in the queue
+    return finalists

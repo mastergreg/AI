@@ -3,11 +3,11 @@
 #
 #* File Name : grids.py
 #
-#* Purpose :
+#* Purpose : Functions related with grid modifying & output
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu 09 Feb 2012 01:38:45 PM EET
+#* Last Modified : Fri 10 Feb 2012 10:04:46 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -18,13 +18,14 @@ blockChar = unichr(0x258A)
 joinedColor = "0;32"
 names = "Vasilis Gerakaris - Gregory Liras"
 
+#Choose what will be printed depending on element in position
 def revertMap(b):
     if b=="@" or b=="#":
         return b
     elif b>=0:
-        return " "
+        return " "                  #unused space gets blankspace
     elif b<0:
-        return "\033[41m \033[0m"
+        return "\033[41m \033[0m"   #obstacle gets red solid box
     else:
         return b
 
@@ -37,15 +38,14 @@ def flushgrid(grid):
 def designpath(color,(sx,sy),(fx,fy),finalists):
     global lgrid
     for (x,y) in finalists:
-        if ( lgrid[x][y].startswith("\033")):
+        if ( lgrid[x][y].startswith("\033")):       #if both robots use position, color with green
             lgrid[x][y] = "\033["+joinedColor+"m*\033[0m"
-        else:
+        else:                                       #else keep designated robot color
             lgrid[x][y]="\033["+color+"m*\033[0m"
     lgrid[sx][sy]="S"
     lgrid[fx][fy]="F"
 
 def printpath():
-
     print "\033[47m"+(" "*(len(lgrid[0])+2))+"\033[0m"
     for i in lgrid:
         print "\033[47m \033[0m"+"".join(i)+"\033[47m \033[0m"
@@ -66,6 +66,6 @@ def printgrid((cx,cy),(fx,fy),grid):
 def modifygrid(finalists,grid):
     i=1
     for (x,y) in finalists:
-        grid[x][y]=i
-        i+=1
+        grid[x][y]=i        #robot 1 marks its steps on the grid to
+        i+=1                #be unusable (on same turn) by robot 2
     return grid

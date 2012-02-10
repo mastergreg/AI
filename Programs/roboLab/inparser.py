@@ -3,11 +3,11 @@
 #
 #* File Name : inparser.py
 #
-#* Purpose :
+#* Purpose : Input parsing of state space
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Thu  9 Feb 2012 22:08:54 EET
+#* Last Modified : Fri 10 Feb 2012 10:05:34 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
