@@ -18,8 +18,8 @@
 \usepackage{framed}
 \usepackage{relsize}
 \usepackage{float}
-%\setmainfont[Mapping=TeX-text]{DejaVu Serif}
-\setmainfont[Mapping=TeX-text]{FreeSerif}
+\setmainfont[Mapping=TeX-text]{DejaVu Serif}
+%\setmainfont[Mapping=TeX-text]{FreeSerif}
 %\setmonofont{Andale Mono}
 %}}}
 \begin{document}
@@ -58,7 +58,7 @@
 Για την υλοποίηση του παραπάνω αλγορίθμου, επιλέχθηκε ως κατάλληλη γλώσσα η
 Python, επειδή μας δίνει τη δυνατότητα να επικεντρωθούμε στα πλέον σημαντικά
 κομμάτια του προβλήματος (αλγόριθμος και στρατηγική αναζήτησης), να γράψουμε
-πυκνό και ευανάγνωστο κώδικα, ενώ με τη χρήση ενός extension module όπως  
+πυκνό και ευανάγνωστο κώδικα, ενώ με τη χρήση ενός extension module όπως
 τo \underline{\href{http://psyco.sourceforge.net/}{Psyco}} έχουμε αντίστοιχο χρόνο
 εκτέλεσης όπως αν γράφαμε σε μια γλώσσα χαμηλότερου επιπέδου.
 
@@ -147,21 +147,35 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \subsection{Χρόνος εκτέλεσης ανά μέγεθος εισόδου}
 
 \begin{minipage}{0.4\textwidth}
-	\begin{tabular}{ | l | l |}
+	\begin{tabular}{| c | c | c |}
 		\hline
-		Nodes & Times \\
-		\hline 
-		\hline 
-
-		
+		Testcase & Nodes & Times \\
+		\hline
+		\hline
+		1 & 54 & 0.029\\
+		2 & 108 & 0.032\\
+		3 & 690 & 0.081\\
+		4 & 992 & 0.105\\
+		5 & 7396 & 0.868\\
+		6 & 14406 & 2.383\\
+		\hline
 	\end{tabular}
 	\end{minipage}
 
+	Aaaaargh!\\
+
 \begin{minipage}{0.4\textwidth}
-	\begin{tabular}{ | l | l |}
+	\begin{tabular}{| c | c | c |}
 		\hline
-		Nodes & Times \\
+		Testcase & Nodes & Times \\
 		\hline
+		\hline
+		1 & 50 & 0.029\\
+		2 & 80 & 0.031\\
+		3 & 260 & 0.037\\
+		4 & 640 & 0.068\\
+		5 & 5760 & 0.497\\
+		6 & 1386 & 0.124\\
 		\hline
 	\end{tabular}
 	\end{minipage}
