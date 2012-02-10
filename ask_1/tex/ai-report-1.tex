@@ -19,6 +19,7 @@
 \usepackage{framed}
 \usepackage{relsize}
 \usepackage{float}
+\usepackage[numbered]{bookmark}
 \setmainfont[Mapping=TeX-text]{DejaVu Serif}
 %\setmainfont[Mapping=TeX-text]{FreeSerif}
 %\setmonofont{Andale Mono}
@@ -147,16 +148,8 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \subsection{Χρόνος εκτέλεσης ανά μέγεθος εισόδου}
 
-\begin{figure}[!ht]
-	\subfloat[Admissible]{\includegraphics[width=0.3\textheight]{files/Adm.png}}
-	\subfloat[NonAdmissible]{\includegraphics[width=0.3\textheight]{files/NonAdm.png}}
-\end{figure}
-\begin{figure}[!ht]
-	\subfloat[Admissible (log)]{\includegraphics[width=0.3\textheight]{files/logAdm.png}}
-	\subfloat[NonAdmissible (log)]{\includegraphics[width=0.3\textheight]{files/logNonAdm.png}}
-\end{figure}
-
-\begin{figure}[!ht]
+\begin{figure}[H]
+	\centering
 \begin{minipage}{0.4\textwidth}
 	\begin{tabular}{| c | c | c |}
 		\hline
@@ -187,6 +180,19 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 		\hline
 	\end{tabular}
 	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[Admissible]{\includegraphics[width=0.3\textheight]{files/Adm.png}}
+	\hspace{1cm}
+	\subfloat[NonAdmissible]{\includegraphics[width=0.3\textheight]{files/NonAdm.png}}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\subfloat[Admissible (log)]{\includegraphics[width=0.3\textheight]{files/logAdm.png}}
+	\hspace{1cm}
+	\subfloat[NonAdmissible (log)]{\includegraphics[width=0.3\textheight]{files/logNonAdm.png}}
 \end{figure}
 
 \subsection{Εκτύπωση βημάτων-συγκρούσεων-εναλλακτικών δρόμων σε παράδειγμα
