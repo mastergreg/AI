@@ -1,5 +1,5 @@
 %{{{packages
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,9pt]{article}
 \usepackage{anysize}
 \marginsize{2cm}{2cm}{1cm}{1cm}
 %\textwidth 6.0in \textheight = 664pt
@@ -58,8 +58,8 @@
 Για την υλοποίηση του παραπάνω αλγορίθμου, επιλέχθηκε ως κατάλληλη γλώσσα η
 Python, επειδή μας δίνει τη δυνατότητα να επικεντρωθούμε στα πλέον σημαντικά
 κομμάτια του προβλήματος (αλγόριθμος και στρατηγική αναζήτησης), να γράψουμε
-πυκνό και ευανάγνωστο κώδικα, ενώ με τη χρήση ενός Just-in-time compiler όπως
-o \underline{\href{http://psyco.sourceforge.net/}{Psycho}} έχουμε ίδιο χρόνο
+πυκνό και ευανάγνωστο κώδικα, ενώ με τη χρήση ενός extension module όπως  
+τo \underline{\href{http://psyco.sourceforge.net/}{Psyco}} έχουμε αντίστοιχο χρόνο
 εκτέλεσης όπως αν γράφαμε σε μια γλώσσα χαμηλότερου επιπέδου.
 
 \subsection{Επιλογή Δομών Δεδομένων}
@@ -156,25 +156,25 @@ Here be dragons!
 \begin{itemize}
 \item
 Οι συναρτήσεις που καλούνται για την ανάγνωση της εισόδου:
-\inputminted[linenos]{c}{../../Programs/roboLab/inparser.py}
+\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/inparser.py}
 
 \item
 Οι ευριστικές που χρησιμοποιούνται στον αλγόριθμο:
-\inputminted[linenos]{c}{../../Programs/roboLab/heuristics.py}
+\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/heuristics.py}
 
 \item
 Το κυρίως σώμα του A* :
-\inputminted[linenos]{c}{../../Programs/roboLab/astar.py}
+\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/astar.py}
 
 \item
 Οι συναρτήσεις που σχετίζονται με την εμφάνιση και τροποποίηση του χώρου
 καταστάσεων:
-\inputminted[linenos]{c}{../../Programs/roboLab/grids.py}
+\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/grids.py}
 
 \item
 Ο controller που καλεί τις παραπάνω συναρτήσεις για να παραχθεί το τελικό
 αποτέλεσμα:
-\inputminted[linenos]{c}{../../Programs/roboLab/controller.py}
+\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/controller.py}
 \end{itemize}
 
 \end{document}
