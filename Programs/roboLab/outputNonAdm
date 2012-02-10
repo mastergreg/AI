@@ -1,0 +1,18 @@
+test1
+Total nodes considered: 50
+./controller.py testcases/$i N  0.01s user 0.01s system 93% cpu 0.023 total
+test2
+Total nodes considered: 80
+./controller.py testcases/$i N  0.02s user 0.01s system 96% cpu 0.026 total
+test3
+Total nodes considered: 640
+./controller.py testcases/$i N  0.02s user 0.01s system 97% cpu 0.033 total
+test4
+Total nodes considered: 260
+./controller.py testcases/$i N  0.01s user 0.01s system 95% cpu 0.023 total
+test5
+Total nodes considered: 5760
+./controller.py testcases/$i N  0.53s user 0.01s system 99% cpu 0.542 total
+test6
+Total nodes considered: 1386
+./controller.py testcases/$i N  0.09s user 0.01s system 98% cpu 0.096 total

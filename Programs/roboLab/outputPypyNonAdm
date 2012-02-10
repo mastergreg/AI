@@ -1,0 +1,18 @@
+test1
+Total nodes considered: 50
+pypy controller.py testcases/$i N  0.03s user 0.01s system 96% cpu 0.043 total
+test2
+Total nodes considered: 80
+pypy controller.py testcases/$i N  0.02s user 0.01s system 94% cpu 0.028 total
+test3
+Total nodes considered: 640
+pypy controller.py testcases/$i N  0.05s user 0.01s system 95% cpu 0.067 total
+test4
+Total nodes considered: 260
+pypy controller.py testcases/$i N  0.03s user 0.01s system 95% cpu 0.036 total
+test5
+Total nodes considered: 5760
+pypy controller.py testcases/$i N  0.48s user 0.01s system 99% cpu 0.490 total
+test6
+Total nodes considered: 1386
+pypy controller.py testcases/$i N  0.11s user 0.01s system 99% cpu 0.121 total
