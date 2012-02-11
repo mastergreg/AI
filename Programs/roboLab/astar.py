@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 17:50:59 EET
+#* Last Modified : Sat 11 Feb 2012 03:41:47 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -18,19 +18,6 @@
 
 def nextNodes((a,b)):
     return [((a-1,b),(a,b)),((a,b-1),(a,b)),((a+1,b),(a,b)),((a,b+1),(a,b))]
-
-def putinlist(starque,(h,c,xy)):
-    if not starque:
-        starque.append((h,c,xy))
-        return starque
-
-    for i in range(len(starque)):
-        (sh,sc,sxy) = starque[i]
-        if sxy == xy:
-            starque.pop(i)
-            (sh,sc,sxy) = min((sh,sc,sxy),(h,c,xy))
-            starque.append((sh,sc,sxy))
-            return starque
 
 def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
     ancestors={}
@@ -86,7 +73,6 @@ def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
         for (h,c,((x,y),father)) in possible:
             if x >= 0 and y >= 0 and x < sizex and y < sizey and grid[x][y] != -1:
                 #check what is in possible list, make sure its sane
-                #starque = putinlist(starque,(h,c,(x,y)))
                 if(x,y) not in passedlist:
                     passedlist.append((x,y))
                     #if I havend passed this so far
