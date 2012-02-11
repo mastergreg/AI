@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 11 Feb 2012 15:25:31 EET
+#* Last Modified : Sat 11 Feb 2012 03:29:42 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -25,7 +25,7 @@ def fieldTranslate(st):
             a.append(-1)
         elif i=='O':
             a.append(0)
-        elif i!='\n':
+        else:
             print "Wrong input format"
             exit(-1)
     return a
@@ -35,7 +35,7 @@ def parseInput(f):
     robo1_initstate = tuple(map(int,f.readline().split()))
     robo2_initstate = tuple(map(int,f.readline().split()))
     target = tuple(map(int,f.readline().split()))
-    text = map(fieldTranslate,f.readlines())
+    text = map(fieldTranslate,map(lambda x:x.strip(),f.readlines()))
     return (target,robo1_initstate,robo2_initstate,text)
 
 def parseUser():
