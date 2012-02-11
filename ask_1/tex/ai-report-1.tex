@@ -1,4 +1,4 @@
-%{{{packages
+%{{{ Preamble
 \documentclass[a4paper,9pt]{article}
 \usepackage{anysize}
 \marginsize{2cm}{2cm}{1cm}{1cm}
@@ -69,8 +69,7 @@ Python, επειδή μας δίνει τη δυνατότητα να επικε
 
 %}}}
 
-
-%{{{ data structure
+%{{{ Data Structures
 
 \subsection{Επιλογή Δομών Δεδομένων}
 Στην υλοποίησή μας επιλέξαμε να χρησιμοποιήσουμε λίστες από τούπλες της Python,
@@ -90,27 +89,56 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 %}}}
 
-%{{{ basic structures functions
+%{{{ Basic functions
 
 \subsection{Βασικές συναρτήσεις-τελεστές}
-2
+Οι συναρτήσεις που σχεδιάστηκαν για την υλοποίηση του αλγορίθμου, όπως
+παρατίθενται στο 8ο κομμάτι της αναφοράς, είναι οι εξής:
+\subsubsection{Ανάγνωση εισόδου}
+    \begin{itemize}
+	\item
+	\item
+	\item
+    \end{itemize}
+\subsubsection{Eυριστικές μέθοδοι}
+    \begin{itemize}
+	\item
+	\item
+    \end{itemize}
+\subsubsection{Κυρίως σώμα του Α*}
+    \begin{itemize}
+	\item
+	\item
+	\item
+    \end{itemize}
+\subsubsection{Χώρος καταστάσεων}
+    \begin{itemize}
+	\item
+	\item
+	\item
+    \end{itemize}
+\subsubsection{Controller}
+    \begin{itemize}
+	\item
+	\item
+	\item
+    \end{itemize}
 %}}}
 
-%{{{ heyristics
+%{{{ Heuristics
 
 \subsection{Ευριστικές μέθοδοι}
 \begin{itemize}
 \item
 Δεδομένου ότι δουλεύουμε σε δισδιάστατο χώρο με μόνο οριζόντια και κάθετη
 κίνηση (όχι διαγώνια), επιλέχθηκε ως πιο έγκυρος και αποδοτικός υποεκτιμητής
-(admissible heuristic) η απόσταση Manhattan:
+(admissible heuris{\kern0pt}tic) η απόσταση Manhattan:
 \begin{center} $ManhDist = |x - x_T| + |y - y_T|$ \end{center}
 Η χρήση υποεκτιμητή μας εγγυάται τη βελτιστότητα της λύσης.
 
 \item
-Ένας
-λειτουργικός υπερεκτιμητής (non-admissible heuristic), είναι το άθροισμα των
-τετραγώνων των αποστάσεων από τον προορισμό:
+Ένας λειτουργικός υπερεκτιμητής (non-admissible heuris{\kern0pt}tic), είναι το άθροισμα
+των τετραγώνων των αποστάσεων από τον προορισμό:
 \begin{center} $SqDist = (x - x_T)^2 + (y - y_T)^2$ \end{center}
 Αν χρησιμοποιήσουμε ένα υπερεκτιμητή, θα επεκτείνουμε πιθανώς πολύ λιγότερους
 κόμβους κατά την αναζήτηση μας. Το χρονικό κέρδος αυτό όμως αντισταθμίζεται με
@@ -121,7 +149,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 %}}}
 
-%{{{ conflicts
+%{{{ Conflicts & Resolution
 
 \subsection{Έλεγχος και επίλυση συγκρούσεων}
 Όπως εξηγήσαμε πριν, ο αλγόριθμός μας εκτελείται πρώτα για το ένα ρομπότ, και
@@ -169,7 +197,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \pagebreak
 
-%{{{ execution times
+%{{{ Execution times
 
 \subsection{Χρόνος εκτέλεσης ανά μέγεθος εισόδου}
 
@@ -178,7 +206,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\begin{tabular}{| c | c | c |}
 		\hline
-		Testcase & Nodes & Times \\
+		Tes{\kern0pt}tcase & Nodes & Time \\
 		\hline
 		\hline
 		1 & 54 & 0.029\\
@@ -193,7 +221,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{minipage}{0.4\textwidth}
 	\begin{tabular}{| c | c | c |}
 		\hline
-		Testcase & Nodes & Times \\
+		Tes{\kern0pt}tcase & Nodes & Time \\
 		\hline
 		\hline
 		1 & 50 & 0.029\\
@@ -209,12 +237,13 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \begin{figure}[H]
 	\centering
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}[b]{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/Adm.png}
 	\caption{Admissible (Σχήμα ~\ref{fig:adm})}
 	\end{minipage}
-\begin{minipage}{0.4\textwidth}
+\hspace{0.1cm}
+\begin{minipage}[b]{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.3\textheight]{files/NonAdm.png}
 	\caption{Non Admissible (Σχήμα ~\ref{fig:nonadm})}
@@ -237,19 +266,19 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 %}}}
 
-%{{{ examples
+%{{{ Output examples
 
 \subsection{Εκτύπωση βημάτων-συγκρούσεων-εναλλακτικών δρόμων σε παράδειγμα
 εκτέλεσης}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{files/test1.png}
-	\caption{Testcase 1}
+	\caption{Tes{\kern0pt}tcase 1}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{files/test5.png}
-	\caption{Testcase 5}
+	\caption{Tes{\kern0pt}tcase 5}
 \end{figure}
 
 %}}}
@@ -284,33 +313,33 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 %}}}
 
-%{{{ big figures
+%{{{ Large figures
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/Adm.png}
-	\caption{Admissible heuristic}
+	\caption{Admissible heuris{\kern0pt}tic}
 	\label{fig:adm}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
-	\caption{Admissible heuristic}
+	\caption{Admissible heuris{\kern0pt}tic}
 	\label{fig:nonadm}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logAdm.png}
-	\caption{Admissible heuristic}
+	\caption{Admissible heuris{\kern0pt}tic}
 	\label{fig:logadm}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
-	\caption{Admissible heuristic}
+	\caption{Admissible heuris{\kern0pt}tic}
 	\label{fig:lognonadm}
 \end{figure}
 
