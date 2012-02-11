@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 11 Feb 2012 11:05:36 PM EET
+#* Last Modified : Sat 11 Feb 2012 11:06:36 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -16,7 +16,7 @@
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
 import heuristics
-from sys import argv,exit as __exit
+from sys import argv
 def fieldTranslate(st):
     a=[]
     for i in st:
@@ -41,7 +41,7 @@ def parseInput(f):
 def parseUser():
     if len(argv) < 3:
         print "Usage: %s <inputfile> <mode (A/N)>" %argv[0]
-        __exit(-1)
+        exit(-1)
     modeCheck = argv[2]
     while modeCheck != "A" and modeCheck != "N" and modeCheck != "a" and modeCheck != "n":
         print "Wrong mode, choose A for admissible heuristic or N for non-admissible"
