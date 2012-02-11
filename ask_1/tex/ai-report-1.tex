@@ -226,7 +226,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.4\textwidth}
+    \begin{minipage}{0.35\textwidth}
         \begin{tabular}{| c | c | c |}
             \hline
             Testcase & Nodes & Time \\
@@ -240,8 +240,9 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
          6 & 14406 & 2.383\\
             \hline
         \end{tabular}
+		\caption{\small{Admissible Heuristic}}
     \end{minipage}
-    \begin{minipage}{0.4\textwidth}
+    \begin{minipage}{0.35\textwidth}
         \begin{tabular}{| c | c | c |}
             \hline
             Testcase & Nodes & Time \\
@@ -255,6 +256,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
          6 & 1386 & 0.124\\
             \hline
         \end{tabular}
+		\caption{\small{Non-Admissible Heuristic}}
     \end{minipage}
 \end{figure}
 
@@ -263,14 +265,14 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
     \begin{minipage}[b]{0.4\textwidth}
         \raggedleft
         \includegraphics[width=0.3\textheight]{files/Adm.png}
-        \caption{Admissible (Σχήμα ~\ref{fig:adm})}
+        \caption{Admissible(logarithmic) (Σχήμα ~\ref{fig:adm})}
     \end{minipage}
     \hspace{1cm}
     \begin{minipage}[b]{0.4\textwidth}
         \begin{flushright}
             \raggedright
             \includegraphics[width=0.3\textheight]{files/NonAdm.png}
-            \caption{Non Admissible (Σχήμα ~\ref{fig:nonadm})}
+            \caption{Non Admissible(logarithmic) (Σχήμα ~\ref{fig:nonadm})}
         \end{flushright}
     \end{minipage}
 \end{figure}
@@ -317,20 +319,20 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
     \item
         Οι συναρτήσεις που καλούνται για την ανάγνωση της εισόδου:
         \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/inparser.py}
-
+\pagebreak
     \item
         Οι ευριστικές που χρησιμοποιούνται στον αλγόριθμο:
         \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/heuristics.py}
-
+\vspace{1cm}
     \item
         Το κυρίως σώμα του A* :
         \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/astar.py}
-
+\vspace{1cm}
     \item
         Οι συναρτήσεις που σχετίζονται με την εμφάνιση και τροποποίηση του χώρου
         καταστάσεων:
         \inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/grids.py}
-
+\pagebreak
     \item
         Ο controller που καλεί τις παραπάνω συναρτήσεις για να παραχθεί το τελικό
         αποτέλεσμα:
@@ -344,14 +346,14 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/Adm.png}
-    \caption{Admissible heuristic}
+    \caption{Admissible heuristic - logarithmic scale}
     \label{fig:adm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
-    \caption{Admissible heuristic}
+    \caption{Non-Admissible heuristic - logarithmic scale}
     \label{fig:nonadm}
 \end{figure}
 
@@ -365,7 +367,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
-    \caption{Admissible heuristic}
+    \caption{Non-Admissible heuristic}
     \label{fig:lognonadm}
 \end{figure}
 
