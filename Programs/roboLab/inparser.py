@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 11 Feb 2012 13:09:39 EET
+#* Last Modified : Sat 11 Feb 2012 15:25:31 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -25,7 +25,7 @@ def fieldTranslate(st):
             a.append(-1)
         elif i=='O':
             a.append(0)
-        else
+        elif i!='\n':
             print "Wrong input format"
             exit(-1)
     return a
