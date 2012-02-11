@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Fri 10 Feb 2012 04:44:06 PM EET
+#* Last Modified : Sat 11 Feb 2012 04:15:04 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -15,37 +15,20 @@
 #
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
-import sys
 
-from inparser import parseInput
+from inparser import parseUser
 from astar import astar
-import heuristics
 from grids import flushgrid,printpath,designpath,modifygrid
+from sys import argv
 
 def main():
-    if len(sys.argv) < 3:
-        print "Usage: %s <inputfile> <mode (A/N)>" %sys.argv[0]
-        return -1
-    f=open(sys.argv[1],"r")
-    (target,r1,r2,initialfield) = parseInput(f)
-    f.close()
+    (target,r1,r2,initialfield,heuristic) = parseUser()
     field = map(list,initialfield)
-    modeCheck = sys.argv[2]
-    while modeCheck != "A" and modeCheck != "N" and modeCheck != "a" and modeCheck != "n":
-        print "Wrong mode, choose A for admissible heuristic or N for non-admissible"
-        modeCheck = raw_input('Enter A or N --->')
-    if modeCheck == "A" or modeCheck == 'a':
-        print "Using Manhattan Distance as admissible heuristic"
-        heuristic = heuristics.manhattanDist
-    else:
-        print "Using Square Distances as non-admissible heuristic"
-        heuristic = heuristics.squaredDist
     print "\nLEGEND:"
     print "\033[1;34m Robot1 path \n\033[1;33m Robot2 path \n\033[0;32m Joined path \033[0m"
     print "\n \033[0;34m ======= Robot 2 plays 'nice' ======= \033[0m"
-    total=0
     (finalists1,nodes) = astar(r1,target,field,heuristic,1)
-    total += nodes
+    total = nodes
     field = modifygrid(finalists1,field)
     (finalists2,nodes) = astar(r2,target,field,heuristic,2)
     total += nodes
@@ -60,7 +43,6 @@ def main():
     flushgrid(field)
     print "\n \033[0;34m ======= Robot 1 plays 'nice' ======= \033[0m"
     field = map(list,initialfield)
-    modeCheck = sys.argv[2]
     (finalists2,nodes) = astar(r2,target,field,heuristic,2)
     total += nodes
     field = modifygrid(finalists2,field)

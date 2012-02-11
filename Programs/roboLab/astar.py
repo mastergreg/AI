@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 11 Feb 2012 03:41:47 AM EET
+#* Last Modified : Sat 11 Feb 2012 04:18:25 AM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -31,40 +31,8 @@ def astar(startpoint,finishpoint,grid,heuristic,robotID=1):
     sizex=len(grid)
     #num of columns
     sizey=len(grid[0])
-    possible = map(lambda x:(heuristic(x,finishpoint)+1,1,x),nextNodes(startpoint))
-    #each point has these characteristics
-    #(heuristic,cost,((x,y),father))
-    for (h,c,((x,y),father)) in possible:
-        #checking for bounds and then checking if grid[x][y]==True
-        #now should be grid[x][y]==0 ??
-        if x >= 0 and y >= 0 and x < sizey and y < sizex and grid[x][y] != -1:
-            passedlist.append((x,y))
-            ancestors[(x,y)]=father
-            starque.append((h,c,(x,y)))
-
-    ind = starque.index(min(starque))
-    (h,c,(x,y)) = starque.pop(ind)
-    #Conflict detection on first step
-    while(grid[x][y] == c + 1 ):
-        print "Conflict in [%d,%d] on step %d , Robot #%d recalculating.." %(x,y,c,robotID)
-        starque.append((h+1,c+1,(x,y)))
-        ind = starque.index(min(starque))
-        #Consideration of alternative path
-        print "Robot #%d trying.." %(robotID),starque[ind][2][0],starque[ind][2][1]
-        (h,c,(x,y)) = starque.pop(ind)
-
-    #ind = starque.index(min(starque))
-    #find index of touple with the lowest heuristic+cost
-    #nxt = starque.pop(ind)
-    nxt = (h,c,(x,y))
-    #remove if from the queue
-    #and store it in nxt
-    #nxt = (minh,c,((x,y),father))
-    current = nxt[2]
-    currentCost = nxt[1]
-    #current cost is the cost so far that is stored in nxt
-    #goal = zip( *nextNodes( finishpoint ) )[0]
-    #print goal
+    currentCost = 0
+    current = startpoint
 
     while(current!=finishpoint):
         #until you find the end
