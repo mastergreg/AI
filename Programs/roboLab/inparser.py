@@ -7,7 +7,7 @@
 #
 #* Creation Date : 24-12-2011
 #
-#* Last Modified : Sat 11 Feb 2012 04:15:25 AM EET
+#* Last Modified : Sat 11 Feb 2012 13:09:39 EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -17,7 +17,7 @@
 
 import heuristics
 from sys import argv,exit
-def retbools(st):
+def fieldTranslate(st):
     a=[]
     for i in st:
         #'X' marks obstacle, 'O' marks open space
@@ -25,6 +25,9 @@ def retbools(st):
             a.append(-1)
         elif i=='O':
             a.append(0)
+        else
+            print "Wrong input format"
+            exit(-1)
     return a
 
 def parseInput(f):
@@ -32,7 +35,7 @@ def parseInput(f):
     robo1_initstate = tuple(map(int,f.readline().split()))
     robo2_initstate = tuple(map(int,f.readline().split()))
     target = tuple(map(int,f.readline().split()))
-    text = map(retbools,f.readlines())
+    text = map(fieldTranslate,f.readlines())
     return (target,robo1_initstate,robo2_initstate,text)
 
 def parseUser():
