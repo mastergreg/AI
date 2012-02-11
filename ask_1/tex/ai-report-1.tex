@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{xgreek}
+\usepackage{multirow}
 \usepackage{subfig}
 \usepackage{fancyvrb}
 \usepackage{minted}
@@ -75,10 +76,10 @@ Python, επειδή μας δίνει τη δυνατότητα να επικε
 Στην υλοποίησή μας επιλέξαμε να χρησιμοποιήσουμε λίστες από τούπλες της Python,
 όπου ο κάθε κόμβος στι λίστα του A* είχε 4 στοιχεία:
 \begin{enumerate}
-    \item Το άθροισμα ευριστικής και κόστους (h + c)
-    \item Το κόστος (c)
-    \item Την τετμημένη του σημείου (x)
-    \item Την τεταγμένη του σημείου (y)
+	\item Το άθροισμα ευριστικής και κόστους (h + c)
+	\item Το κόστος (c)
+	\item Την τετμημένη του σημείου (x)
+	\item Την τεταγμένη του σημείου (y)
 \end{enumerate}
 
 Επιπλέον, χρησιμοποιείται ένα λεξικό (dict) προκειμένου να
@@ -95,60 +96,63 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 Οι συναρτήσεις που σχεδιάστηκαν για την υλοποίηση του αλγορίθμου, όπως
 παρατίθενται στο 8\textsuperscript{ο} κομμάτι της αναφοράς, είναι οι εξής:
 \subsubsection{Ανάγνωση εισόδου}
-    \begin{itemize}
+\begin{itemize}
 	\item \emph{parseUser} : Διαβάζει και ελέγχει για ορθότητα τα ορίσματα
-	που δώθηκαν στο πρόγραμμα.
+		που δώθηκαν στο πρόγραμμα.
 	\item \emph{parseInput} : Διαβάζει και αποθηκεύειτις γραμμές του αρχείου
-	εισόδου
+		εισόδου
 	\item \emph{fieldTranslate} : Ελέγχει την ορθότητα της εισόδου της
-	κάτοψης της αίθουσας και τη "μεταφράζει" στη μορφή την οποία θα
-	χρησιμοποιηθεί αργότερα.
-    \end{itemize}
+		κάτοψης της αίθουσας και τη "μεταφράζει" στη μορφή την οποία θα
+		χρησιμοποιηθεί αργότερα.
+\end{itemize}
 \subsubsection{Eυριστικές μέθοδοι}
-    \begin{itemize}
+\begin{itemize}
 	\item \emph{manhattanDist} : Η απόσταση manhattan, υποεκτιμητής
 	\item \emph{squaredDist} : Τα τετράγωνα των αποστάσεων, υπερεκτιμητής
-    \end{itemize}
+\end{itemize}
 \subsubsection{Κυρίως σώμα του Α*}
-    \begin{itemize}
-	\item
-	\item
-	\item
-    \end{itemize}
+\begin{itemize}
+	\item \emph{astar} : Δέχεται σαν είσοδο την αρχική και την τελική θέση, το χώρο
+		καταστάσεων, την ευρεστική συνάρτηση και τον κωδικό του robot και εκτελεί
+		τον αλγόριθμο Α* μέχρι να βρεί λύση. Ανασυγκροτεί το μονοπάτι που βρήκε
+		και το επιστρέφει μαζί με το πλήθος των κόμβων που εξετάστηκαν
+	\item \emph{nextNodes} : Επιστρέφει μια λίστα με την τετράδα των πιθανών
+		κόμβων για εξέταση γύρω από ένα σημείο.
+\end{itemize}
 \subsubsection{Χώρος καταστάσεων}
-    \begin{itemize}
+\begin{itemize}
 	\item
 	\item
 	\item
-    \end{itemize}
+\end{itemize}
 \subsubsection{Controller}
-    \begin{itemize}
+\begin{itemize}
 	\item
 	\item
 	\item
-    \end{itemize}
+\end{itemize}
 %}}}
 
 %{{{ Heuristics
 
 \subsection{Ευριστικές μέθοδοι}
 \begin{itemize}
-\item
-Δεδομένου ότι δουλεύουμε σε δισδιάστατο χώρο με μόνο οριζόντια και κάθετη
-κίνηση (όχι διαγώνια), επιλέχθηκε ως πιο έγκυρος και αποδοτικός υποεκτιμητής
-(admissible heuris{\kern0pt}tic) η απόσταση Manhattan:
-\begin{center} $ManhDist = |x - x_T| + |y - y_T|$ \end{center}
-Η χρήση υποεκτιμητή μας εγγυάται τη βελτιστότητα της λύσης.
+	\item
+		Δεδομένου ότι δουλεύουμε σε δισδιάστατο χώρο με μόνο οριζόντια και κάθετη
+		κίνηση (όχι διαγώνια), επιλέχθηκε ως πιο έγκυρος και αποδοτικός υποεκτιμητής
+		(admissible heuris{\kern0pt}tic) η απόσταση Manhattan:
+		\begin{center} $ManhDist = |x - x_T| + |y - y_T|$ \end{center}
+		Η χρήση υποεκτιμητή μας εγγυάται τη βελτιστότητα της λύσης.
 
-\item
-Ένας λειτουργικός υπερεκτιμητής (non-admissible heuris{\kern0pt}tic), είναι το άθροισμα
-των τετραγώνων των αποστάσεων από τον προορισμό:
-\begin{center} $SqDist = (x - x_T)^2 + (y - y_T)^2$ \end{center}
-Αν χρησιμοποιήσουμε ένα υπερεκτιμητή, θα επεκτείνουμε πιθανώς πολύ λιγότερους
-κόμβους κατά την αναζήτηση μας. Το χρονικό κέρδος αυτό όμως αντισταθμίζεται με
-την πιθανότητα να μην είναι βέλτιστη η λύση που προκύπτει, αφού ορισμένοι
-βέλτιστοι κόμβοι αποφεύγονται λόγω του αυξημένου συνολικού κόστους που
-εισάγεται με τον υπερεκτιμητή.
+	\item
+		Ένας λειτουργικός υπερεκτιμητής (non-admissible heuris{\kern0pt}tic), είναι το άθροισμα
+		των τετραγώνων των αποστάσεων από τον προορισμό:
+		\begin{center} $SqDist = (x - x_T)^2 + (y - y_T)^2$ \end{center}
+		Αν χρησιμοποιήσουμε ένα υπερεκτιμητή, θα επεκτείνουμε πιθανώς πολύ λιγότερους
+		κόμβους κατά την αναζήτηση μας. Το χρονικό κέρδος αυτό όμως αντισταθμίζεται με
+		την πιθανότητα να μην είναι βέλτιστη η λύση που προκύπτει, αφού ορισμένοι
+		βέλτιστοι κόμβοι αποφεύγονται λόγω του αυξημένου συνολικού κόστους που
+		εισάγεται με τον υπερεκτιμητή.
 \end{itemize}
 
 %}}}
@@ -162,10 +166,10 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 ρομπότ στο k βήμα, ανιχνεύεται πιθανή σύγκρουση. Το 2ο ρομπότ έχει πλέον 2
 επιλογές:
 \begin{enumerate}
-    \item Να περιμένει (wait) για ένα γύρο, επιτρέποντας στο 1ο να προχωρήσει
-    και έπειτα ακολουθώντας το (μιας και οι επιλογές του 1ου είναι εξ'ορισμού
-    βέλτιστες), δίνοντας στο σημείο της σύγκρουσης κόστος $c+1$
-    \item Να αναζητήσει κάποια εναλλακτική πορεία προς το σημείο συνάντησης.
+	\item Να περιμένει (wait) για ένα γύρο, επιτρέποντας στο 1ο να προχωρήσει
+		και έπειτα ακολουθώντας το (μιας και οι επιλογές του 1ου είναι εξ'ορισμού
+		βέλτιστες), δίνοντας στο σημείο της σύγκρουσης κόστος $c+1$
+	\item Να αναζητήσει κάποια εναλλακτική πορεία προς το σημείο συνάντησης.
 \end{enumerate}
 Από τις 2 αυτές επιλογές, τελικά θα διαλέξει αυτή που έχει το λιγότερο κόστος
 (σε αριθμό βημάτων)
@@ -176,23 +180,23 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 στο τελικά βέλτιστο αποτέλεσμα της αναζήτησης.
 
 \begin{algorithm}[H]
-\caption{Conflict resolution}
-\begin{algorithmic}[1]
-\Procedure{resolve}{$newGrid[x][y], currStep$}
-    \If{$newGrid[x][y] == currStep$}
-	\State $cost_1 \gets (len(Astar((x,y), target)) + 1)$
-	\State $path_1 \gets (path(Astar((x,y), target)))$
-	\State $newgrid[x][y] \gets Invalid$
-	\State $cost_2 \gets len(Astar(currPos, target))$
-	\State $path_1 \gets (path(Astar((currPos, target)))$
-	\If{$cost_1 < cost_2$}
-	    \State $cost \gets cost_1$
-	    \State $path \gets path_1$
-	\Else
-	    \State $cost \gets cost_2$
-	    \State $path \gets path_2$
+	\caption{Conflict resolution}
+	\begin{algorithmic}[1]
+		\Procedure{resolve}{$newGrid[x][y], currStep$}
+		\If{$newGrid[x][y] == currStep$}
+		\State $cost_1 \gets (len(Astar((x,y), target)) + 1)$
+		\State $path_1 \gets (path(Astar((x,y), target)))$
+		\State $newgrid[x][y] \gets Invalid$
+		\State $cost_2 \gets len(Astar(currPos, target))$
+		\State $path_1 \gets (path(Astar((currPos, target)))$
+		\If{$cost_1 < cost_2$}
+		\State $cost \gets cost_1$
+		\State $path \gets path_1$
+		\Else
+		\State $cost \gets cost_2$
+		\State $path \gets path_2$
 	\EndIf
-    \EndIf
+\EndIf
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -207,64 +211,67 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 
 \begin{figure}[H]
 	\centering
-\begin{minipage}{0.4\textwidth}
-	\begin{tabular}{| c | c | c |}
-		\hline
-		Tes{\kern0pt}tcase & Nodes & Time \\
-		\hline
-		\hline
-		1 & 54 & 0.029\\
-		2 & 108 & 0.032\\
-		3 & 690 & 0.081\\
-		4 & 992 & 0.105\\
-		5 & 7396 & 0.868\\
-		6 & 14406 & 2.383\\
-		\hline
-	\end{tabular}
+	\begin{minipage}{0.4\textwidth}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			Tes{\kern0pt}tcase & Nodes & Time \\
+			\hline
+			\hline
+			1 & 54 & 0.029\\
+		 2 & 108 & 0.032\\
+		 3 & 690 & 0.081\\
+		 4 & 992 & 0.105\\
+		 5 & 7396 & 0.868\\
+		 6 & 14406 & 2.383\\
+			\hline
+		\end{tabular}
 	\end{minipage}
-\begin{minipage}{0.4\textwidth}
-	\begin{tabular}{| c | c | c |}
-		\hline
-		Tes{\kern0pt}tcase & Nodes & Time \\
-		\hline
-		\hline
-		1 & 50 & 0.029\\
-		2 & 80 & 0.031\\
-		3 & 260 & 0.037\\
-		4 & 640 & 0.068\\
-		5 & 5760 & 0.497\\
-		6 & 1386 & 0.124\\
-		\hline
-	\end{tabular}
-	\end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-\begin{minipage}[b]{0.4\textwidth}
-	\centering
-	\includegraphics[width=0.3\textheight]{files/Adm.png}
-	\caption{Admissible (Σχήμα ~\ref{fig:adm})}
-	\end{minipage}
-\hspace{0.1cm}
-\begin{minipage}[b]{0.4\textwidth}
-	\centering
-	\includegraphics[width=0.3\textheight]{files/NonAdm.png}
-	\caption{Non Admissible (Σχήμα ~\ref{fig:nonadm})}
+	\begin{minipage}{0.4\textwidth}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			Tes{\kern0pt}tcase & Nodes & Time \\
+			\hline
+			\hline
+			1 & 50 & 0.029\\
+		 2 & 80 & 0.031\\
+		 3 & 260 & 0.037\\
+		 4 & 640 & 0.068\\
+		 5 & 5760 & 0.497\\
+		 6 & 1386 & 0.124\\
+			\hline
+		\end{tabular}
 	\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-\begin{minipage}{0.4\textwidth}
-	\centering
-	\includegraphics[width=0.3\textheight]{files/logAdm.png}
-	\caption{Admissible (Σχήμα ~\ref{fig:logadm})}
+	\begin{minipage}[b]{0.4\textwidth}
+		\raggedleft
+		\includegraphics[width=0.3\textheight]{files/Adm.png}
+		\caption{Admissible (Σχήμα ~\ref{fig:adm})}
 	\end{minipage}
-\begin{minipage}{0.4\textwidth}
+	\hspace{1cm}
+	\begin{minipage}[b]{0.4\textwidth}
+		\begin{flushright}
+			\raggedright
+			\includegraphics[width=0.3\textheight]{files/NonAdm.png}
+			\caption{Non Admissible (Σχήμα ~\ref{fig:nonadm})}
+		\end{flushright}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.3\textheight]{files/logNonAdm.png}
-	\caption{Non Admissible (Σχήμα ~\ref{fig:lognonadm})}
+	\begin{minipage}{0.4\textwidth}
+		\raggedleft
+		\includegraphics[width=0.3\textheight]{files/logAdm.png}
+		\caption{Admissible (Σχήμα ~\ref{fig:logadm})}
+	\end{minipage}
+	\hspace{1cm}
+	\begin{minipage}{0.4\textwidth}
+		\raggedright
+		\includegraphics[width=0.3\textheight]{files/logNonAdm.png}
+		\caption{Non Admissible (Σχήμα ~\ref{fig:lognonadm})}
 	\end{minipage}
 \end{figure}
 
@@ -292,27 +299,27 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \pagebreak
 \subsection{Πηγαίος κώδικας}
 \begin{itemize}
-\item
-Οι συναρτήσεις που καλούνται για την ανάγνωση της εισόδου:
-\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/inparser.py}
+	\item
+		Οι συναρτήσεις που καλούνται για την ανάγνωση της εισόδου:
+		\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/inparser.py}
 
-\item
-Οι ευριστικές που χρησιμοποιούνται στον αλγόριθμο:
-\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/heuristics.py}
+	\item
+		Οι ευριστικές που χρησιμοποιούνται στον αλγόριθμο:
+		\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/heuristics.py}
 
-\item
-Το κυρίως σώμα του A* :
-\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/astar.py}
+	\item
+		Το κυρίως σώμα του A* :
+		\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/astar.py}
 
-\item
-Οι συναρτήσεις που σχετίζονται με την εμφάνιση και τροποποίηση του χώρου
-καταστάσεων:
-\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/grids.py}
+	\item
+		Οι συναρτήσεις που σχετίζονται με την εμφάνιση και τροποποίηση του χώρου
+		καταστάσεων:
+		\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/grids.py}
 
-\item
-Ο controller που καλεί τις παραπάνω συναρτήσεις για να παραχθεί το τελικό
-αποτέλεσμα:
-\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/controller.py}
+	\item
+		Ο controller που καλεί τις παραπάνω συναρτήσεις για να παραχθεί το τελικό
+		αποτέλεσμα:
+		\inputminted[linenos,fontsize=\footnotesize,frame=leftline]{python}{files/controller.py}
 \end{itemize}
 
 %}}}
