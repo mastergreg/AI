@@ -21,8 +21,8 @@
 \usepackage{framed}
 \usepackage{relsize}
 \usepackage{float}
-%\setmainfont[Mapping=TeX-text]{DejaVu Serif}
-\setmainfont[Mapping=TeX-text]{FreeSerif}
+\setmainfont[Mapping=TeX-text]{DejaVu Serif}
+%\setmainfont[Mapping=TeX-text]{FreeSerif}
 %\setmonofont{Andale Mono}
 %}}}
 \begin{document}
@@ -136,14 +136,15 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
         &\\
     \emph{revertMap} :&\multirow{2}{10cm}{Μεταφράζει ένα σημείο του χώρου καταστάσεων σε
         συμβολοσειρά για να τυπωθεί στην οθόνη.}\\
-        &\\&\\ 
+        &\\&\\
 \end{tabular}
 \subsubsection{Controller}
-\begin{itemize}
-    \item
-    \item
-    \item
-\end{itemize}
+\begin{tabular}{r l}
+    \emph{main} :&Εφαρμόζει τον αλγόριθμο, καλώντας τις απαραίτητες
+	συναρτήσεις για να παραχθούν τα αποτελέσματα του A*, εκτυπώνει το output
+	της εκτέλεσης και για τις 2 στρατηγικές. Τέλος ελέγχει και αποφασίζει για
+	το ποια στρατηγική είναι η πλέον συμφέρουσα (ή αν είναι ισάξιες).\\
+\end{tabular}
 %}}}
 
 %{{{ Heuristics
@@ -153,12 +154,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
     \item
         Δεδομένου ότι δουλεύουμε σε δισδιάστατο χώρο με μόνο οριζόντια και κάθετη
         κίνηση (όχι διαγώνια), επιλέχθηκε ως πιο έγκυρος και αποδοτικός υποεκτιμητής
-        (admissible heuris{\kern0pt}tic) η απόσταση Manhattan:
+        (admissible heuristic) η απόσταση Manhattan:
         \begin{center} $ManhDist = |x - x_T| + |y - y_T|$ \end{center}
         Η χρήση υποεκτιμητή μας εγγυάται τη βελτιστότητα της λύσης.
 
     \item
-        Ένας λειτουργικός υπερεκτιμητής (non-admissible heuris{\kern0pt}tic), είναι το άθροισμα
+        Ένας λειτουργικός υπερεκτιμητής (non-admissible heuristic), είναι το άθροισμα
         των τετραγώνων των αποστάσεων από τον προορισμό:
         \begin{center} $SqDist = (x - x_T)^2 + (y - y_T)^2$ \end{center}
         Αν χρησιμοποιήσουμε ένα υπερεκτιμητή, θα επεκτείνουμε πιθανώς πολύ λιγότερους
@@ -227,7 +228,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
     \begin{minipage}{0.4\textwidth}
         \begin{tabular}{| c | c | c |}
             \hline
-            Tes{\kern0pt}tcase & Nodes & Time \\
+            Testcase & Nodes & Time \\
             \hline
             \hline
             1 & 54 & 0.029\\
@@ -242,7 +243,7 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
     \begin{minipage}{0.4\textwidth}
         \begin{tabular}{| c | c | c |}
             \hline
-            Tes{\kern0pt}tcase & Nodes & Time \\
+            Testcase & Nodes & Time \\
             \hline
             \hline
             1 & 50 & 0.029\\
@@ -297,12 +298,12 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{figure}[H]
     \centering
     \includegraphics[scale=1]{files/test1.png}
-    \caption{Tes{\kern0pt}tcase 1}
+    \caption{Testcase 1}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{files/test5.png}
-    \caption{Tes{\kern0pt}tcase 5}
+    \caption{Testcase 5}
 \end{figure}
 
 %}}}
@@ -342,28 +343,28 @@ dictionaries είναι associative arrays, ένας τύπος αντικειμ
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/Adm.png}
-    \caption{Admissible heuris{\kern0pt}tic}
+    \caption{Admissible heuristic}
     \label{fig:adm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/NonAdm.png}
-    \caption{Admissible heuris{\kern0pt}tic}
+    \caption{Admissible heuristic}
     \label{fig:nonadm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/logAdm.png}
-    \caption{Admissible heuris{\kern0pt}tic}
+    \caption{Admissible heuristic}
     \label{fig:logadm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textheight,angle=90]{files/logNonAdm.png}
-    \caption{Admissible heuris{\kern0pt}tic}
+    \caption{Admissible heuristic}
     \label{fig:lognonadm}
 \end{figure}
 
